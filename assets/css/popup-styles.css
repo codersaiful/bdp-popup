@@ -59,6 +59,7 @@ span.bdp-popup-close {
     line-height: 12px;
     height: 23px;
     border-radius: 4px;
+    z-index: 1;
 }
 
 .bdp-pop-header {

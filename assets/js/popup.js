@@ -5,6 +5,7 @@ jQuery(function($) {
         var PopupBox = PopupElement.find('.bdp-popup');
         PopupElement.fadeIn();
         $(document.body).on('click','span.bdp-popup-close',function(){
+            console.log(this);
             hidePopup();
         });
 

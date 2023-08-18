@@ -14,7 +14,7 @@ class Frontend_Loader extends Base
         
         $this->cookie_expire_time = time() + 10 * DAY_IN_SECONDS;
         //This following line stay uncomment when development
-        $this->cookie_expire_time = time() + 5;
+        $this->cookie_expire_time = time() + 50;
         
         $this->is_already_cookie = isset($_COOKIE[$this->cookie_name]) && $_COOKIE[$this->cookie_name] == $this->plugin_prefix;
         add_action('wp_footer',[$this, 'display_popup']);
