@@ -21,14 +21,16 @@ jQuery(function($) {
             PopupElement.fadeOut();
         }
 
-        $('.my-text').click(function() {
+        $(document.body).on('click','.bdp-popup .coupon',function(){
             var textToCopy = $(this).text();
             var tempInput = $('<input>');
             $('body').append(tempInput);
             tempInput.val(textToCopy).select();
+
             document.execCommand('copy');
             tempInput.remove();
             alert('Text copied to clipboard: ' + textToCopy);
         });
+
     });
 });
