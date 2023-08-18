@@ -1,4 +1,4 @@
-<div id="bdp-popup-wrapper" class="bdp-popup-wrapper">
+<div id="bdp-popup-wrapper" class="bdp-popup-wrapper" style="display: none;">
     <div class="bdp-popup-inside">
         <div class="bdp-popup">
             <div class="bdp-pop-header">
@@ -22,31 +22,4 @@
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var popup = document.getElementById('bdp-popup-wrapper');
-        var popupClose = document.getElementsByClassName('bdp-popup-close');
 
-        if (popup && popupClose) {
-            popupClose.addEventListener('click', function () {
-                popup.style.display = 'none';
-                
-            });
-        }
-
-        var couponCode = document.getElementsByClassName('bdp-coupon-code');
-    
-        couponCode.addEventListener('click', function () {
-            copyToClipboard(couponCode.textContent);
-        });
-
-        function copyToClipboard(text) {
-            var textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-        }
-    });
-</script>

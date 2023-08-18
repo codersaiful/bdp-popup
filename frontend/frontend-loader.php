@@ -23,7 +23,13 @@ class Frontend_Loader extends Base
     }
 
     public function wp_enqueue(){
-        wp_enqueue_style('popup-styles', $this->base_url . 'assets/css/popup-styles.css', array(), '1.0');
+        wp_enqueue_script( 'jquery' );
+        
+        //Custom JS
+        wp_register_script( $this->plugin_prefix . 'popup', $this->base_url . 'assets/js/popup.js', array( 'jquery' ), $this->dev_version, true );
+        wp_enqueue_script( $this->plugin_prefix . 'popup' );
+
+        wp_enqueue_style($this->plugin_prefix . 'popup-styles', $this->base_url . 'assets/css/popup-styles.css', array(), $this->dev_version);
     }
 
     public function display_popup() {
