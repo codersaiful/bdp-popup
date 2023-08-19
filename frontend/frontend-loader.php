@@ -6,7 +6,7 @@ use BDP_Popup\Core\Base;
 class Frontend_Loader extends Base
 {
     public $popup_as_header = true;
-    public $popup_page_id;// = 7;//Page ID, where I want to show popup always without main delay
+    public $popup_page_id = 7;//Page ID, where I want to show popup always without main delay
 
     /**
      * specially for selected page.
