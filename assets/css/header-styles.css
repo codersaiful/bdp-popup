@@ -1,0 +1,21 @@
+div#bdp-header-wrapper {
+    background: #f1f1f1;
+}
+div#bdp-header-wrapper .bdp-left-side>img {
+    height: 35px;
+    width: auto;
+}
+div#bdp-header-wrapper .bdp-right-side {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+div#bdp-header-wrapper .bdp-right-side>h4 {
+    padding: 0;
+    margin: 0;
+}
+div#bdp-header-wrapper .bdp-popup .coupon {
+    padding: 1px 15px;
+    margin-bottom: 0 !important;
+    font-size: 14px;
+}

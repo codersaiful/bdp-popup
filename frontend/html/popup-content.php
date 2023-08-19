@@ -13,6 +13,9 @@
                     <img src="<?php echo esc_url( $popupImg ); ?>"/>
                 </div>
                 <div class="bdp-right-side">
+                    <?php 
+                    // var_dump($this);
+                    ?>
                     <h2>60% Discount on WC Addons</h2>
                     <p>Use coupon to get total 60% discount on all product from main price.</p>
                     <div class="coupon-wrapper">
