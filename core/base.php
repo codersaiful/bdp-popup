@@ -3,7 +3,7 @@ namespace BDP_Popup\Core;
 
 class Base{
     public $_root = __CLASS__;
-    public $plugin_prefix = 'bdp_pophh';
+    public $plugin_prefix = 'bdp_pop';
     public $dev_version = BDP_POP_DEV_VERSION;
     public $base_url = BDP_POP_BASE_URL;
     public $base_dir = BDP_POP_BASE_DIR;

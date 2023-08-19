@@ -14,6 +14,8 @@ class Frontend_Loader extends Base
      * @var integer
      */
     public $page_delay = 15; //as second
+    //Closed date 10 sept 2023
+    public $closed_date = '2023-09-10';//2023-08-19 //Y-M-D
 
     //Don't set value on following. will generate at constructor and inside
     public $cookie_name;
@@ -25,13 +27,16 @@ class Frontend_Loader extends Base
 
     public function init()
     {
-        
+        //Popup and Header will close to the specific date
+        if( time() > strtotime($this->closed_date) ) return;
         
         $this->cookie_name = $this->plugin_prefix . '_poppup_displayed';
         
         $this->cookie_expire_time = time() + HOUR_IN_SECONDS;
         //This following line stay uncomment when development
-        // $this->cookie_expire_time = time() + 120;
+        $this->cookie_expire_time = time() + 20;
+        //Debug and When want to delete cokie//Uncomment for once a time then again comment it
+        // setcookie($this->cookie_name, $this->plugin_prefix, 3600);
         
         $this->is_already_cookie = isset($_COOKIE[$this->cookie_name]) && $_COOKIE[$this->cookie_name] == $this->plugin_prefix;
 
@@ -73,7 +78,7 @@ class Frontend_Loader extends Base
              * and calculate as mili second
              * so if value 2 then result will 2*500 = 1000 milisecond = 1 second
              */
-            'rand_number' => rand(2,8), 
+            'rand_number' => rand(5,18), 
 
         ];
         if($this->current_page_id == $this->popup_page_id && $this->page_delay ){
@@ -118,8 +123,6 @@ class Frontend_Loader extends Base
      */
     public function set_cookie()
     {   
-        //When want to delete cokie
-        // setcookie($this->cookie_name, $this->plugin_prefix, -3600, '/');
 
         if( ! $this->is_popup ) return;
         setcookie($this->cookie_name, $this->plugin_prefix, $this->cookie_expire_time);  

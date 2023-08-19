@@ -79,7 +79,9 @@ span.bdp-popup-close {
 }
 .bdp-right-side h2 {
     color: #96588a;
-    font-weight: normal;
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 23px;
 }
 a.bdp-browe-product-link {
     color: #96588a;

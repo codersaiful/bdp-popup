@@ -21,7 +21,7 @@ jQuery(function($) {
 
         function hidePopup(){
             PopupBox.css({
-                marginTop: '-200px',
+                marginTop: '-100px',
             });
             PopupElement.fadeOut();
         }

@@ -27,7 +27,10 @@ div#bdp-header-wrapper .bdp-right-side>h4 {
 }
 div#bdp-header-wrapper .bdp-right-side>h4 {
     color: white;
+    font-size: 19px;
+    line-height: 19px;
 }
+
 div#bdp-header-wrapper .bdp-popup .coupon {
     padding: 1px 15px;
     margin-bottom: 0 !important;
