@@ -6,7 +6,7 @@ use BDP_Popup\Core\Base;
 class Frontend_Loader extends Base
 {
     public $popup_as_header = true;
-    public $popup_page_id = 7;//Confirm popup for specific page
+    public $popup_page_id;// = 7;//Page ID, where I want to show popup always without main delay
 
     /**
      * specially for selected page.
@@ -34,7 +34,7 @@ class Frontend_Loader extends Base
         
         $this->cookie_expire_time = time() + HOUR_IN_SECONDS;
         //This following line stay uncomment when development
-        $this->cookie_expire_time = time() + 20;
+        // $this->cookie_expire_time = time() + 20;
         //Debug and When want to delete cokie//Uncomment for once a time then again comment it
         // setcookie($this->cookie_name, $this->plugin_prefix, 3600);
         
@@ -77,8 +77,9 @@ class Frontend_Loader extends Base
              * in js file, I will multiply with 500 
              * and calculate as mili second
              * so if value 2 then result will 2*500 = 1000 milisecond = 1 second
+             * finally rand(3,13 set done)
              */
-            'rand_number' => rand(5,18), 
+            'rand_number' => rand(3,13), 
 
         ];
         if($this->current_page_id == $this->popup_page_id && $this->page_delay ){
