@@ -84,3 +84,12 @@ span.bdp-popup-close {
 a.bdp-browe-product-link {
     color: #96588a;
 }
+div#bdp-popup-wrapper p.bdp-copy-coupon {
+    color: #ff7ab9;
+    line-height: 15px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+div#bdp-popup-wrapper p.bdp-copy-coupon:hover {
+    color: black;
+}

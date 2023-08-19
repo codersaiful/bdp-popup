@@ -10,11 +10,14 @@
                 </div>
                 <div class="bdp-right-side">
 
-                    <h4>60% Discount on WC Addons</h4>
+                    <h4>60% Discount for 10 days</h4>
                     
                     <div class="coupon-wrapper">
                         <div class="coupon bdp-coupon-code">SPECIAL60F10DAYS</div>
                     </div>
+                    <p class="claim-text bdp-copy-coupon">
+                        Use Coupon
+                    </p>
                     
                 </div>
             </div>

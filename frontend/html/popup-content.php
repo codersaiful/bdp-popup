@@ -20,7 +20,7 @@
                     <p>Use coupon to get total 60% discount on all product from main price.</p>
                     <div class="coupon-wrapper">
                         <div class="coupon bdp-coupon-code">SPECIAL60F10DAYS</div>
-                        <p>Click on Coupon to copy.</p>
+                        <p class="bdp-copy-coupon">Copy Coupon</p>
                     </div>
                     <a class="bdp-browe-product-link" target="_blank" href="https://codeastrology.com/downloads/">Browse products</a>
                 </div>

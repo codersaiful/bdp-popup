@@ -1,21 +1,45 @@
 div#bdp-header-wrapper {
-    background: #f1f1f1;
+    background: #9C27B0;
 }
 div#bdp-header-wrapper .bdp-left-side>img {
     height: 35px;
     width: auto;
 }
+div#bdp-header-wrapper .bdp-popup-body {
+    padding: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 div#bdp-header-wrapper .bdp-right-side {
     flex-direction: row;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
+div#bdp-header-wrapper .bdp-right-side>p,
+div#bdp-header-wrapper .bdp-right-side>div,
 div#bdp-header-wrapper .bdp-right-side>h4 {
     padding: 0;
     margin: 0;
+}
+div#bdp-header-wrapper .bdp-right-side>h4 {
+    color: white;
 }
 div#bdp-header-wrapper .bdp-popup .coupon {
     padding: 1px 15px;
     margin-bottom: 0 !important;
     font-size: 14px;
+}
+div#bdp-header-wrapper p.claim-text {
+    color: #ffffff7a;
+    cursor: pointer;
+}
+
+div#bdp-header-wrapper .coupon.bdp-coupon-code {
+    background: #730b85;
+    color: white;
+    border-color: #ec7aff;
 }

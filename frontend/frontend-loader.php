@@ -5,13 +5,22 @@ use BDP_Popup\Core\Base;
 
 class Frontend_Loader extends Base
 {
+    public $popup_as_header = true;
+    public $popup_page_id = 7;//Confirm popup for specific page
+
+    /**
+     * specially for selected page.
+     *
+     * @var integer
+     */
+    public $page_delay = 15; //as second
+
+    //Don't set value on following. will generate at constructor and inside
     public $cookie_name;
     public $cookie_expire_time;
     public $is_already_cookie;
     public $is_popup;
 
-    public $popup_as_header = true;
-    public $popup_page_id = 7;//Confirm popup for specific page
     public $current_page_id;
 
     public function init()
@@ -20,9 +29,9 @@ class Frontend_Loader extends Base
         
         $this->cookie_name = $this->plugin_prefix . '_poppup_displayed';
         
-        $this->cookie_expire_time = time() + 10 * DAY_IN_SECONDS;
+        $this->cookie_expire_time = time() + HOUR_IN_SECONDS;
         //This following line stay uncomment when development
-        $this->cookie_expire_time = time() + 30;
+        // $this->cookie_expire_time = time() + 120;
         
         $this->is_already_cookie = isset($_COOKIE[$this->cookie_name]) && $_COOKIE[$this->cookie_name] == $this->plugin_prefix;
 
@@ -40,7 +49,7 @@ class Frontend_Loader extends Base
         add_action('wp_footer',[$this, 'display_popup']);
         add_action('wp_body_open',[$this, 'display_header']);
         add_action('init',[$this, 'set_cookie']);
-        // var_dump($this);
+
     }
 
     public function wp_enqueue(){
@@ -67,9 +76,14 @@ class Frontend_Loader extends Base
             'rand_number' => rand(2,8), 
 
         ];
-        if($this->current_page_id == $this->popup_page_id){
-            //If match with my selected page, then I will wait 20 * 500 = 10000 mili second = 10 second
-            $BDP_POPUP['rand_number'] = 20;
+        if($this->current_page_id == $this->popup_page_id && $this->page_delay ){
+            /**
+             * If match with my selected page, then I will wait 20 * 500 = 10000 mili second = 10 second
+             * currently set 15 in property
+             * mean, here will be 30
+             * and delay will 30*500 = 1500 mili second = 15 second
+             */
+            $BDP_POPUP['rand_number'] = 2 * $this->page_delay;
         }
         wp_localize_script( $js_handle, 'BDP_POPUP', $BDP_POPUP );
 
