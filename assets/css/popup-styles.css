@@ -12,10 +12,14 @@ div#bdp-popup-wrapper {
     align-items: center;
     justify-content: center;
 }
+div#bdp-popup-wrapper p, div#bdp-popup-wrapper h2,div#bdp-popup-wrapper div {
+    margin: 0;
+}
+
 .bdp-popup-inside{
     max-width: 100%;
 }
-.bdp-popup {
+div#bdp-popup-wrapper div.bdp-popup {
     background: #fff4e4;
     box-shadow: 0 10px 30px #0000001f;
     border-radius: 6px;
@@ -35,6 +39,11 @@ div#bdp-popup-wrapper {
 .bdp-left-side>img {
     width: 120px;
     height: auto;
+}
+.bdp-right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 .bdp-popup .coupon {
     padding: 10px;

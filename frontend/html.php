@@ -13,9 +13,12 @@
                     <img src="<?php echo esc_url( $popupImg ); ?>"/>
                 </div>
                 <div class="bdp-right-side">
-                    <h2>60% Discount on All Products!</h2>
+                    <h2>60% Discount on WC Addons</h2>
                     <p>Use coupon to get total 60% discount on all product from main price.</p>
-                    <div class="coupon bdp-coupon-code">SPECIAL60F10DAYS</div>
+                    <div class="coupon-wrapper">
+                        <div class="coupon bdp-coupon-code">SPECIAL60F10DAYS</div>
+                        <p>Click on Coupon to copy.</p>
+                    </div>
                     <a class="bdp-browe-product-link" target="_blank" href="https://codeastrology.com/downloads/">Browse products</a>
                 </div>
             </div>

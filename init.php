@@ -1,9 +1,23 @@
 <?php
-/*
-Plugin Name: AAAAAA AAAAAA Popup Plugin
-Description: Display a popup to users once every 10 days.
-Version: 1.0
-*/
+/**
+ * Plugin Name: BDP Popup and Coupon Display
+ * Plugin URI: https://wooproducttable.com/pricing/?utm_source=WPT+Plugin+Dashboard&utm_medium=Free+Version
+ * Description: Display offer and coupon popup and modal for your WordPress website.
+ * Author: CodeAstrology Team
+ * Author URI: https://wooproducttable.com/?utm_source=BDP-Dashboard&utm_medium=Free+Version
+ * Tags: popup, modal, popup-header
+ * 
+ * Version: 1.0.0
+ * Requires at least:    4.0.0
+ * Tested up to:         6.3
+ * WC requires at least: 5.0.0
+ * WC tested up to: 	 8.0.2
+ * 
+ * 
+ * Text Domain: bdp-popup
+ * Domain Path: /languages/
+ */
+
 if( ! defined( 'BDP_POP_DEV_VERSION' ) ){
     define( "BDP_POP_DEV_VERSION", '1.0.0.0' );
 }
@@ -44,9 +58,11 @@ class BDP_Popup_Init
         
         include_once BDP_POP_BASE_DIR . 'autoloader.php';
 
-        
-        $front = new BDP_Popup\Frontend\Frontend_Loader();
-        $front->init();
+        if( ! is_admin() ){
+            
+            $front = new BDP_Popup\Frontend\Frontend_Loader();
+            $front->init();
+        }
     }
 }
 

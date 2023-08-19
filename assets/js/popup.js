@@ -3,9 +3,13 @@ jQuery(function($) {
     $(document).ready(function() {
         var PopupElement = $('#bdp-popup-wrapper');
         var PopupBox = PopupElement.find('.bdp-popup');
-        PopupElement.fadeIn();
+        console.log(BDP_POPUP);
+        var delayTime = BDP_POPUP.rand_number * 500;
+        setTimeout(function(){
+            PopupElement.fadeIn();
+        }, delayTime);
+        
         $(document.body).on('click','span.bdp-popup-close',function(){
-            console.log(this);
             hidePopup();
         });
 
