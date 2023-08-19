@@ -19,7 +19,7 @@
  */
 
 if( ! defined( 'BDP_POP_DEV_VERSION' ) ){
-    define( "BDP_POP_DEV_VERSION", '1.0.0.0' );
+    define( "BDP_POP_DEV_VERSION", '1.0.0.1' );
 }
 if( ! defined( 'BDP_POP_BASE_URL' ) ){
     define( "BDP_POP_BASE_URL", plugins_url() . '/'. plugin_basename( dirname( __FILE__ ) ) . '/' );
