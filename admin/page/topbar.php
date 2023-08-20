@@ -1,5 +1,5 @@
 <?php
-$min_max_img = WC_MMQ_BASE_URL . 'assets/images/brand/social/min-max.png';
+$min_max_img = BDP_POP_ASSETS_URL . 'images/popup-left.png';
 
 /**
  * This following part actually
@@ -19,9 +19,6 @@ $min_max_img = WC_MMQ_BASE_URL . 'assets/images/brand/social/min-max.png';
  * tai notun kore check korechi.
  */
 $license_direct = true;
-if($this->is_pro && class_exists('\WC_MMQ_PRO')){
-    $license_direct = \WC_MMQ_PRO::$direct;
-}
 
 $topbar_sub_title = __( 'Manage and Settings', 'wcmmq' );
 if( isset( $this->topbar_sub_title ) && ! empty( $this->topbar_sub_title ) ){
@@ -36,7 +33,7 @@ if( isset( $this->topbar_sub_title ) && ! empty( $this->topbar_sub_title ) ){
                     <img src="<?php echo esc_url( $min_max_img ); ?>" class="wcmmq-brand-logo">
                 </div>
                 <div class="wcmmq-main-title">
-                    <h2 class="wcmmq-ntitle"><?php _e("Min Max Control", "wcmmq");?></h2>
+                    <h2 class="wcmmq-ntitle"><?php _e("BDP Popup", "wcmmq");?></h2>
                 </div>
                 
                 <div class="wcmmq-main-title wcmmq-main-title-secondary">
@@ -47,20 +44,12 @@ if( isset( $this->topbar_sub_title ) && ! empty( $this->topbar_sub_title ) ){
         </div>
         <div class="col-lg-5">
             <div class="header-button-wrapper">
-                <?php if( ! $this->is_pro){ ?>
-                    <a class="wcmmq-button reverse" 
-                        href="https://codeastrology.com/min-max-quantity/pricing/" 
-                        target="_blank">
-                        <i class="wcmmq_icon-heart-filled"></i>
-                        Get Premium Offer
-                    </a>
-                <?php }else if($license_direct){ ?>
-                    <a class="wcmmq-btn wcmmq-has-icon" 
-                        href="<?php esc_attr( admin_url() ) ?>admin.php?page=wcmmq-license">
-                        <span><i class=" wcmmq_icon-heart-1"></i></span>
-                        License
-                    </a>
-                <?php } ?>
+                <a class="wcmmq-button reverse" 
+                    href="https://codeastrology.com/downloads" 
+                    target="_blank">
+                    <i class="wcmmq_icon-heart-filled"></i>
+                    All Plugins
+                </a>
                 
                 <a class="wcmmq-button reset" 
                     href="https://codeastrology.com/min-max-quantity/documentation/" 

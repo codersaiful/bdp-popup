@@ -2,7 +2,6 @@
 namespace BDP_Popup\Admin;
 
 use BDP_Popup\Core\Base;
-use BDP_Popup\Modules\Module_Controller;
 
 class Page_Loader extends Base
 {
@@ -15,19 +14,38 @@ class Page_Loader extends Base
     protected $is_pro;
     protected $pro_version;
     public $license;
-    public $module_controller;
 
+    public $submitted_data;
+
+    public static $inistance;
+    public static $menu_url;
+    public static function init()
+    {
+        if( is_null(self::$inistance) ){
+            self::$inistance = new self;
+        }
+        
+        return self::$inistance;
+    }
     public function __construct()
     {
         $this->main_slug = $this->plugin_prefix . '-' . $this->main_slug;
+        self::$menu_url = $this->main_slug;
         $this->page_folder_dir = $this->base_dir . 'admin/page/';
         $this->topbar_file = $this->page_folder_dir . 'topbar.php';
         $this->topbar_sub_title = __("Manage and Settings", "bdp_pop");
-    }
 
+        $this->submitted_data = filter_input_array(INPUT_POST);
+        $this->run();
+    }
+    public static function get_menu_url()
+    {
+        return self::$menu_url;
+    }
     public function run()
     {
         add_action( 'admin_menu', [$this, 'admin_menu'] );
+        add_filter('admin_body_class', [$this, 'body_class']);
         add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_scripts'] );
     }
 
@@ -114,6 +132,20 @@ class Page_Loader extends Base
     }
 
 
+    public function body_class( $classes )
+    {
+        global $current_screen;
+
+        
+        $s_id = isset( $current_screen->id ) ? $current_screen->id : '';
+        if( strpos( $s_id, $this->plugin_prefix ) !== false ){
+            $classes .= ' ' . $this->plugin_prefix . '-zero-body ';
+        }
+        
+        
+        return $classes;
+
+    }
     public function admin_footer_text($text)
     {
         $rev_link = 'https://wordpress.org/support/plugin/woo-min-max-quantity-step-control-single/reviews/#new-post';
