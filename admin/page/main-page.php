@@ -24,9 +24,12 @@
                     <?php echo esc_html__('Save Change','wcmmq');?>
                     </strong>
                 </button>
-
-                
             </div>
+
+            <div class="wcmmq-section-panel universal-settings" id="wcmmq-universal-settings">
+                <?php include 'universal-settings.php'; ?>
+            </div>
+
 
             <div class="wcmmq-section-panel no-background wcmmq-full-form-submit-wrapper">
                 

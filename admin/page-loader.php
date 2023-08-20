@@ -5,7 +5,7 @@ use BDP_Popup\Core\Base;
 
 class Page_Loader extends Base
 {
-
+    //Regenerate at constructor with plugin_prefix
     public $main_slug = 'popup';
     public $page_folder_dir;
     public $topbar_file;
@@ -16,9 +16,9 @@ class Page_Loader extends Base
     public $license;
 
     public $submitted_data;
+    public $option_key;
 
     public static $inistance;
-    public static $menu_url;
     public static function init()
     {
         if( is_null(self::$inistance) ){
@@ -30,17 +30,25 @@ class Page_Loader extends Base
     public function __construct()
     {
         $this->main_slug = $this->plugin_prefix . '-' . $this->main_slug;
-        self::$menu_url = $this->main_slug;
+        $this->option_key = $this->plugin_prefix . '_options';
         $this->page_folder_dir = $this->base_dir . 'admin/page/';
         $this->topbar_file = $this->page_folder_dir . 'topbar.php';
         $this->topbar_sub_title = __("Manage and Settings", "bdp_pop");
 
         $this->submitted_data = filter_input_array(INPUT_POST);
+        if(!empty($this->submitted_data)){
+            // $this->update_options();
+        }
         $this->run();
     }
-    public static function get_menu_url()
+    public function update_options()
     {
-        return self::$menu_url;
+        var_dump($this->get_options());
+        var_dump($this->submitted_data);
+    }
+    public function get_options()
+    {
+        return get_option( $this->option_key, [] );
     }
     public function run()
     {
