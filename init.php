@@ -58,10 +58,12 @@ class BDP_Popup_Init
         
         include_once BDP_POP_BASE_DIR . 'autoloader.php';
 
+        $pl = new BDP_Popup\Admin\Page_Loader();
+        $pl->run();
+
         if( ! is_admin() ){
             
-            $front = new BDP_Popup\Frontend\Frontend_Loader();
-            $front->init();
+            BDP_Popup\Frontend\Frontend_Loader::init();
         }
     }
 }

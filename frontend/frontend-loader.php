@@ -25,7 +25,18 @@ class Frontend_Loader extends Base
 
     public $current_page_id;
 
-    public function init()
+    public static $inistance;
+    public static function init()
+    {
+        if( is_null(self::$inistance) ){
+            self::$inistance = new self;
+        }
+        
+        return self::$inistance;
+    }
+
+
+    public function __construct()
     {
         //Popup and Header will close to the specific date
         if( time() > strtotime($this->closed_date) ) return;
@@ -54,8 +65,8 @@ class Frontend_Loader extends Base
         add_action('wp_footer',[$this, 'display_popup']);
         add_action('wp_body_open',[$this, 'display_header']);
         add_action('init',[$this, 'set_cookie']);
-
     }
+    
 
     public function wp_enqueue(){
 

@@ -1,33 +1,33 @@
 <?php 
-namespace WC_MMQ\Admin;
+namespace BDP_Popup\Admin;
 
-use WC_MMQ;
-use WC_MMQ\Core\Base;
-use WC_MMQ\Admin\Page_Loader;
-use WC_MMQ\Admin\Tracker;
-use WC_MMQ\Admin\Adm_Inc\Settings\Settings_Loader;
-use WC_MMQ\Admin\Adm_Inc\Plugin_Deactive\Deactive_Form;
+
+use BDP_Popup\Core\Base;
+use BDP_Popup\Admin\Page_Loader;
+use BDP_Popup\Admin\Tracker;
 
 class Admin_Loader extends Base{
-    public function __construct(){
-        $deactive_form = new Deactive_Form();
-        $deactive_form->run();
 
-        $main_page = new Page_Loader();
-        $main_page->run();
-
+    public static $inistance;
+    public static function init()
+    {
+        if( is_null(self::$inistance) ){
+            self::$inistance = new self;
+        }
         
+        return self::$inistance;
+    }
 
-        // $settings = new Settings_Loader();
-        // $settings->run();
+    public function __construct(){
+
 
         add_action('admin_init', [$this, 'admin_init']);
     }
 
     public function admin_init(){
 
-        $tracker = new Tracker();
-        $tracker->run();
+        // $tracker = new Tracker();
+        // $tracker->run();
         
     }
 }
