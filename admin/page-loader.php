@@ -37,7 +37,7 @@ class Page_Loader extends Base
 
         $this->submitted_data = filter_input_array(INPUT_POST);
         if(!empty($this->submitted_data)){
-            // $this->update_options();
+            $this->update_options();
         }
         $this->run();
     }
