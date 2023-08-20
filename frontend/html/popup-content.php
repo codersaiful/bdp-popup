@@ -2,6 +2,7 @@
 $data = $this->options;
 $title = $data['title'] ?? '';
 $coupon = $data['coupon'] ?? '';
+$message = $data['message'] ?? '';
 ?>
 <div id="bdp-popup-wrapper" class="bdp-popup-wrapper" style="display: none;">
     <div class="bdp-popup-inside">
@@ -24,7 +25,10 @@ $coupon = $data['coupon'] ?? '';
                     <?php if( ! empty( $title ) ){ ?>
                     <h2><?php echo esc_html( $title ); ?></h2>
                     <?php } ?>
-                    <p>Use coupon to get total 60% discount on all product from main price.</p>
+
+                    <?php if( ! empty( $message ) ){ ?>
+                    <p><?php echo esc_html( $message ); ?></p>
+                    <?php } ?>
                     <div class="coupon-wrapper">
                         <div class="coupon bdp-coupon-code"><?php echo esc_html( $coupon ); ?></div>
                         <p class="bdp-copy-coupon">Copy Coupon</p>

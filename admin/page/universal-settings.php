@@ -60,6 +60,27 @@
             <td>
                 <div class="wcmmq-form-control">
                     <div class="form-label col-lg-6">
+                        <label for="data[message]">Long Text</label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <?php
+                        $message = $save_data['message'] ?? '';
+                        ?>
+                        <input name="data[message]" id="data[message]" class="ua_input_number" 
+                        value="<?php echo esc_attr($message); ?>"  type="text">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="wcmmq-form-info">
+                    It shows on popup as a message text. input a simple direction or a message
+                </div> 
+            </td>
+        </tr> 
+        <tr>
+            <td>
+                <div class="wcmmq-form-control">
+                    <div class="form-label col-lg-6">
                         <label for="data[coupon]">Coupon Code</label>
                     </div>
                     <div class="form-field col-lg-6">
