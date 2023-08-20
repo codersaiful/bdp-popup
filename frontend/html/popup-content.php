@@ -1,3 +1,8 @@
+<?php 
+$data = $this->options;
+$title = $data['title'] ?? '';
+$coupon = $data['coupon'] ?? '';
+?>
 <div id="bdp-popup-wrapper" class="bdp-popup-wrapper" style="display: none;">
     <div class="bdp-popup-inside">
         <div class="bdp-popup">
@@ -16,10 +21,12 @@
                     <?php 
                     // var_dump($this);
                     ?>
-                    <h2>60% Discount on WC Addons</h2>
+                    <?php if( ! empty( $title ) ){ ?>
+                    <h2><?php echo esc_html( $title ); ?></h2>
+                    <?php } ?>
                     <p>Use coupon to get total 60% discount on all product from main price.</p>
                     <div class="coupon-wrapper">
-                        <div class="coupon bdp-coupon-code">SPECIAL60F10DAYS</div>
+                        <div class="coupon bdp-coupon-code"><?php echo esc_html( $coupon ); ?></div>
                         <p class="bdp-copy-coupon">Copy Coupon</p>
                     </div>
                     <a class="bdp-browe-product-link" target="_blank" href="https://codeastrology.com/downloads/">Browse products</a>

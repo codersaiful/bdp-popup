@@ -8,6 +8,7 @@ class Base{
     public $base_url = BDP_POP_BASE_URL;
     public $base_dir = BDP_POP_BASE_DIR;
     public $assets_url = BDP_POP_ASSETS_URL;
+    public $option_key = 'bdp_pop_options';
 
     public $data_packed;
 

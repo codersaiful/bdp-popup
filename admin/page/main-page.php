@@ -1,4 +1,6 @@
-
+<?php
+$save_data = $this->options;
+?>
 <div class="wrap wcmmq_wrap wcmmq-content">
 
     <h1 class="wp-heading "></h1>

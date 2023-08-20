@@ -22,6 +22,7 @@ class Frontend_Loader extends Base
     public $cookie_expire_time;
     public $is_already_cookie;
     public $is_popup;
+    public $options;
 
     public $current_page_id;
 
@@ -118,16 +119,20 @@ class Frontend_Loader extends Base
      */
     public function display_popup() {
         if( ! $this->is_popup ) return;
-
+        $this->set_options();
         include $this->base_dir . 'frontend/html/popup-content.php';
     }
     public function display_header() {
         if( ! $this->popup_as_header ) return;
         if($this->current_page_id == $this->popup_page_id) return;
-
+        $this->set_options();
         include $this->base_dir . 'frontend/html/header-content.php';
     }
 
+    public function set_options()
+    {
+        $this->options = get_option( $this->option_key );
+    }
     /**
      * Set plugin_prefix as cookie value
      *

@@ -16,7 +16,7 @@ class Page_Loader extends Base
     public $license;
 
     public $submitted_data;
-    public $option_key;
+    public $options;
 
     public static $inistance;
     public static function init()
@@ -30,25 +30,33 @@ class Page_Loader extends Base
     public function __construct()
     {
         $this->main_slug = $this->plugin_prefix . '-' . $this->main_slug;
-        $this->option_key = $this->plugin_prefix . '_options';
         $this->page_folder_dir = $this->base_dir . 'admin/page/';
         $this->topbar_file = $this->page_folder_dir . 'topbar.php';
         $this->topbar_sub_title = __("Manage and Settings", "bdp_pop");
 
-        $this->submitted_data = filter_input_array(INPUT_POST);
-        if(!empty($this->submitted_data)){
-            $this->update_options();
+
+        $this->options = get_option( $this->option_key, [] );
+        $input_array = filter_input_array(INPUT_POST);
+        $this->submitted_data = ! empty( $input_array['data'] ) ? $input_array['data'] : [];
+        if( ! empty($this->submitted_data)){
+            $this->options = $this->submitted_data;
         }
+        
+        $this->update_options();
+
         $this->run();
     }
     public function update_options()
     {
-        var_dump($this->get_options());
-        var_dump($this->submitted_data);
+
+        if( ! empty( $this->submitted_data )){
+            update_option($this->option_key,$this->submitted_data);
+        }
+        
     }
     public function get_options()
     {
-        return get_option( $this->option_key, [] );
+        return $this->options;
     }
     public function run()
     {
