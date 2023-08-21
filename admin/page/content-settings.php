@@ -52,7 +52,7 @@
             </td>
             <td>
                 <div class="wcmmq-form-info">
-                    DescriptionOfField_and_docLink
+                    Title of Popup and Header Topbar text.
                 </div> 
             </td>
         </tr> 
@@ -141,6 +141,28 @@
             </td>
         </tr> 
 
+
+        <tr>
+            <td>
+                <div class="wcmmq-form-control">
+                    <div class="form-label col-lg-6">
+                        <label for="data[image_url]">Image URL</label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <?php
+                        $image_url = $save_data['image_url'] ?? '';
+                        ?>
+                        <input name="data[image_url]" id="data[browse_link]" class="ua_input_number" 
+                        value="<?php echo esc_attr($image_url); ?>"  type="text">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="wcmmq-form-info">
+                    Input your full image path. Size should not getter then 500px for height or width.
+                </div> 
+            </td>
+        </tr> 
 
 
     </tbody>
