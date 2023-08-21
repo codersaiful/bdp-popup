@@ -14,8 +14,8 @@ class Frontend_Loader extends Base
      * @var integer
      */
     public $page_delay = 15; //as second
-    //Closed date 10 sept 2023
-    public $closed_date = '2023-09-10';//2023-08-19 //Y-M-D
+
+    public $closed_date;// Example//2023-08-19 //Y-M-D
 
     //Don't set value on following. will generate at constructor and inside
     public $cookie_name;
@@ -39,21 +39,34 @@ class Frontend_Loader extends Base
 
     public function __construct()
     {
+        /**
+         * To set $this->options value
+         * we have to call at the begging.
+         * Otherwise, database value will not work.
+         * It's need at the begginng of this contructor. Because, we have to change everything based on value.
+         */
+        $this->set_options();
+
+
         //Popup and Header will close to the specific date
+        $this->closed_date = ! empty( $this->options['closed_date'] ) ? $this->options['closed_date'] : time() + 100;
         if( time() > strtotime($this->closed_date) ) return;
         
         $this->cookie_name = $this->plugin_prefix . '_poppup_displayed';
         
-        $this->cookie_expire_time = time() + HOUR_IN_SECONDS;
-        //This following line stay uncomment when development
-        // $this->cookie_expire_time = time() + 20;
-        //Debug and When want to delete cokie//Uncomment for once a time then again comment it
-        // setcookie($this->cookie_name, $this->plugin_prefix, 3600);
+        $expire = ! empty( $this->options['cookie_expire_time'] ) ? $this->options['cookie_expire_time'] : HOUR_IN_SECONDS;
+        $this->cookie_expire_time = time() + $expire;
+
         
         $this->is_already_cookie = isset($_COOKIE[$this->cookie_name]) && $_COOKIE[$this->cookie_name] == $this->plugin_prefix;
 
         $this->is_popup = ! $this->is_already_cookie;
-        
+
+        /**
+         * Other propertyy set here
+         */
+        $this->popup_page_id = ! empty( $this->options['popup_page_id'] ) ? $this->options['popup_page_id'] : null;
+
         /**
          * wp_enqueue_scripts calling should first, because I have also calculate 
          * because I have define and check 
@@ -66,6 +79,7 @@ class Frontend_Loader extends Base
         add_action('wp_footer',[$this, 'display_popup']);
         add_action('wp_body_open',[$this, 'display_header']);
         add_action('init',[$this, 'set_cookie']);
+        var_dump($_COOKIE);
     }
     
 
@@ -119,13 +133,11 @@ class Frontend_Loader extends Base
      */
     public function display_popup() {
         if( ! $this->is_popup ) return;
-        $this->set_options();
         include $this->base_dir . 'frontend/html/popup-content.php';
     }
     public function display_header() {
         if( ! $this->popup_as_header ) return;
         if($this->current_page_id == $this->popup_page_id) return;
-        $this->set_options();
         include $this->base_dir . 'frontend/html/header-content.php';
     }
 

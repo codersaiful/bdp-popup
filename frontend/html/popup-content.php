@@ -1,8 +1,9 @@
 <?php 
 $data = $this->options;
-$title = $data['title'] ?? '';
-$coupon = $data['coupon'] ?? '';
-$message = $data['message'] ?? '';
+$title = $data['title'] ?? __( "Summer discount upto 86% - Hurry" );
+$coupon = $data['coupon'] ?? __( 'SAIFUL', 'bdp-popup' );
+$message = $data['message'] ?? __( 'Use coupon to get total 60% discount from main price.', 'bdp-popup' );
+$imgage_url = $data['image_url'] ?? BDP_POP_ASSETS_URL . 'images/popup-left.png';
 ?>
 <div id="bdp-popup-wrapper" class="bdp-popup-wrapper" style="display: none;">
     <div class="bdp-popup-inside">

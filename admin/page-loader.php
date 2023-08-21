@@ -48,8 +48,10 @@ class Page_Loader extends Base
     }
     public function update_options()
     {
-
+        
         if( ! empty( $this->submitted_data )){
+            $cookie_name = $this->plugin_prefix . '_poppup_displayed';
+            setcookie($cookie_name, $this->plugin_prefix, 100);
             update_option($this->option_key,$this->submitted_data);
         }
         
