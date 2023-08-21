@@ -1,5 +1,6 @@
 <?php
 $save_data = $this->options;
+var_dump($save_data);
 ?>
 <div class="wrap wcmmq_wrap wcmmq-content">
 
@@ -28,10 +29,12 @@ $save_data = $this->options;
                 </button>
             </div>
 
+            <div class="wcmmq-section-panel content-settings" id="wcmmq-universal-settings">
+                <?php include 'content-settings.php'; ?>
+            </div>
             <div class="wcmmq-section-panel universal-settings" id="wcmmq-universal-settings">
                 <?php include 'universal-settings.php'; ?>
             </div>
-
 
             <div class="wcmmq-section-panel no-background wcmmq-full-form-submit-wrapper">
                 
