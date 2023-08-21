@@ -26,7 +26,7 @@ $save_data = $this->options;
                     </strong>
                 </button>
             </div>
-
+            <?php wp_nonce_field( $this->plugin_prefix, $this->plugin_prefix ); ?>
             <div class="wcmmq-section-panel content-settings" id="wcmmq-universal-settings">
                 <?php include 'content-settings.php'; ?>
             </div>
