@@ -21,20 +21,22 @@ jQuery(function($) {
 
         function hidePopup(){
             PopupBox.css({
-                marginTop: '-200px',
+                marginTop: '-100px',
             });
             PopupElement.fadeOut();
         }
 
-        $(document.body).on('click','.bdp-popup .coupon',function(){
-            var textToCopy = $(this).text();
+        $(document.body).on('click','.bdp-copy-coupon',function(){
+            // var couponBox = $('.bdp-popup .coupon');
+            var couponBox = $(this).closest('.bdp-popup-body').find('.coupon-wrapper .coupon');
+            var textToCopy = couponBox.text();
             var tempInput = $('<input>');
             $('body').append(tempInput);
             tempInput.val(textToCopy).select();
 
             document.execCommand('copy');
             tempInput.remove();
-            alert('Text copied to clipboard: ' + textToCopy);
+            alert('Copied to clipboard: ' + textToCopy);
         });
 
     });
