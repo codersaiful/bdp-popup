@@ -33,6 +33,9 @@ $save_data = $this->options;
             <div class="wcmmq-section-panel universal-settings" id="wcmmq-universal-settings">
                 <?php include 'universal-settings.php'; ?>
             </div>
+            <div class="wcmmq-section-panel coupon-toggle" id="coupon-toggle-settings">
+                <?php include 'coupon-toggle.php'; ?>
+            </div>
 
             <div class="wcmmq-section-panel no-background wcmmq-full-form-submit-wrapper">
                 

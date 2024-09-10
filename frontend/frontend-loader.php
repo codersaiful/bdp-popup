@@ -79,7 +79,7 @@ class Frontend_Loader extends Base
         add_action('wp_footer',[$this, 'display_popup']);
         add_action('wp_body_open',[$this, 'display_header']);
         add_action('init',[$this, 'set_cookie']);
-        var_dump($_COOKIE);
+        // var_dump($_COOKIE);
     }
     
 
