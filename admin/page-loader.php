@@ -89,7 +89,7 @@ class Page_Loader extends Base
 
     public function admin_menu()
     {
-        $capability = apply_filters( 'bdp_pop_menu_capability', 'manage_woocommerce' );
+        $capability = apply_filters( 'bdp_pop_menu_capability', 'manage_options' );
     
 
         $min_max_img = null;// = $this->base_url . 'assets/images/min-max.png';
