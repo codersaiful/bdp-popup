@@ -67,17 +67,24 @@ class Frontend_Loader extends Base
          */
         $this->popup_page_id = ! empty( $this->options['popup_page_id'] ) ? $this->options['popup_page_id'] : null;
 
-        /**
-         * wp_enqueue_scripts calling should first, because I have also calculate 
-         * because I have define and check 
-         * * $this->current_page_id
-         * * $this->popup_page_id 
-         * 
-         * so it should at the first
-         */
-        add_action('wp_enqueue_scripts',[$this, 'wp_enqueue']);
-        add_action('wp_footer',[$this, 'display_popup']);
-        add_action('wp_body_open',[$this, 'display_header']);
+        if( ! empty($this->options['visibility_all']) ){
+            /**
+             * wp_enqueue_scripts calling should first, because I have also calculate 
+             * because I have define and check 
+             * * $this->current_page_id
+             * * $this->popup_page_id 
+             * 
+             * so it should at the first
+             */
+            add_action('wp_enqueue_scripts',[$this, 'wp_enqueue']);
+            add_action('wp_footer',[$this, 'display_popup']);
+            add_action('wp_body_open',[$this, 'display_header']);
+
+        }
+        
+        if( ! empty($this->options['coupon_visibility']) ){
+            add_action('wp_body_open',[$this, 'display_couponbox']);
+        }
         add_action('init',[$this, 'set_cookie']);
         // var_dump($_COOKIE);
     }
@@ -134,6 +141,19 @@ class Frontend_Loader extends Base
     public function display_popup() {
         if( ! $this->is_popup ) return;
         include $this->base_dir . 'frontend/html/popup-content.php';
+    }
+    /**
+     * Popup Element included
+     * and added here.
+     * Total Popup content is here
+     *
+     * @return void
+     */
+    public function display_couponbox() {
+        echo '<pre>';
+        print_r($this->options);
+        echo '</pre>';
+        // include $this->base_dir . 'frontend/html/popup-content.php';
     }
     public function display_header() {
         if( ! $this->popup_as_header ) return;

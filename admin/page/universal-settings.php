@@ -15,25 +15,37 @@
 
     <tbody>
 
-<!--     
-        <tr>
+    <tr>
             <td>
                 <div class="wcmmq-form-control">
                     <div class="form-label col-lg-6">
-                        LabelTagHere
+                        <label for="data[visibility_all]">Visibility Header and Popup</label>
                     </div>
                     <div class="form-field col-lg-6">
-                        InputFieldOrAnyOtherField
+                        <?php
+                        $header_chk = '';
+                        $visibility_all = $save_data['visibility_all'] ?? '';
+                        if(!empty($visibility_all)){
+                            $header_chk = 'checked';
+                        }
+                        
+                        ?>
+                        <label class="switch">
+                            <input value="1" name="data[visibility_all]"
+                                <?php echo $header_chk; /* finding checked or null */ ?> type="checkbox" id="_tracker">
+                            <div class="slider round"><!--ADDED HTML -->
+                                <span class="on"><?php echo esc_html__('ON','wcmmq');?></span><span class="off"> <?php echo esc_html__('OFF','wcmmq');?></span><!--END-->
+                            </div>
+                        </label>
                     </div>
                 </div>
             </td>
             <td>
                 <div class="wcmmq-form-info">
-                    DescriptionOfField_and_docLink
+                    Topbar and Popup will Show or hide
                 </div> 
             </td>
         </tr> 
--->
 
         <tr>
             <td>

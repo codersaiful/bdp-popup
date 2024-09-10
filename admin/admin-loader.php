@@ -20,7 +20,7 @@ class Admin_Loader extends Base{
 
     public function __construct(){
         Page_Loader::init();
-        Tracker::init();
+        // Tracker::init();
         // add_action('admin_init', [$this, 'admin_init']);
     }
 
