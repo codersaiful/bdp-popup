@@ -27,6 +27,9 @@ class Frontend_Loader extends Base
 
     public $current_page_id;
 
+    public $api_site_url;
+
+
     public static $inistance;
     public static function init()
     {
@@ -40,8 +43,6 @@ class Frontend_Loader extends Base
 
     public function __construct()
     {
-        $ddd = API::init();
-        $saiful = $ddd->get_remote();
         
         /**
          * To set $this->options value
@@ -51,7 +52,18 @@ class Frontend_Loader extends Base
          */
         // $this->set_options();
         $this->options = get_option( $this->option_key );
-        
+
+        /**
+         * To set options based on api
+         * We need following function
+         * 
+         * @since 1.0.0.11
+         */
+        $this->api_site_url = $this->options['api_site_url'] ?? null;
+        if( ! empty( $this->api_site_url ) && filter_var($this->api_site_url, FILTER_VALIDATE_URL) ) {
+            $this->modify_options_based_on_api();
+        }
+
         //Popup and Header will close to the specific date
         $this->closed_date = ! empty( $this->options['closed_date'] ) ? $this->options['closed_date'] : time() + 100;
         if( time() > strtotime($this->closed_date) ) return;
@@ -93,6 +105,21 @@ class Frontend_Loader extends Base
         // dd($_COOKIE);
     }
     
+    protected function modify_options_based_on_api(){
+        $remote_data_transient = get_transient( $this->token_key );
+
+        if( ! empty( $remote_data_transient ) ){
+            $this->options = array_merge( $remote_data_transient, array_filter( $this->options ) );
+            return;
+        }
+        $api = API::init();
+        $this->token_key = $api->token_key;
+        $remote_options = $api->get_remote();
+        if( ! empty( $remote_options ) ){
+            set_transient( $this->token_key, $remote_options, 4000);
+        }
+        $this->options = array_merge( $this->options, $remote_options );
+    }
 
     public function wp_enqueue(){
 

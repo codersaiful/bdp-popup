@@ -9,7 +9,8 @@ class API extends Base
     public $route_namespace = 'bdp_popup/v1';
     public $data_route = 'data';
     public $options;
-    public $target_api_url;
+    public $target_api_site;
+    public $api_url;
 
 
     public $http_response_code = 200;
@@ -46,9 +47,10 @@ class API extends Base
         $this->options = get_option( $this->option_key );
         $site_url = $this->options['api_site_url'] ?? null;
         if( ! empty( $site_url ) && filter_var($site_url, FILTER_VALIDATE_URL) ) {
-            $this->target_api_url = $site_url;
+            $this->target_api_site = $site_url;
+            $this->api_url = trailingslashit( $this->target_api_site ) .'wp-json/'  . $this->route_namespace . '/' . $this->data_route;
         }
-        if( ! $this->target_api_url ){
+        if( ! $this->target_api_site ){
             add_action('rest_api_init', [$this,'register_endpoint']);
         }
         // add_action('rest_api_init', [$this,'register_endpoint']);
@@ -57,21 +59,18 @@ class API extends Base
     public function get_remote()
     {
         
-        $response = wp_remote_post(
-            $this->target_api_url
-        );
+        $response = wp_remote_post( $this->api_url );
+        // return [$this->api_url];
         if (is_wp_error($response)) {
-          
             // dd('Webhook request failed: ' . $response->get_error_message());
             return [
-                'success' => false,
-                'message' => 'Webhook request failed: ' . $response->get_error_message()];
+                'status' => false,
+                'message' => 'failed ' . $response->get_error_message()];
           }else{
+            // return ['saiful' => 'TEst success'];
             $response_body = wp_remote_retrieve_body($response);
-            
+            // return $response_body;
             $token_data = json_decode($response_body, true);
-            // dd($token_data);
-            // set_transient( $tokn_key, $token_data, 3500);
             return $token_data;
           }
           return;

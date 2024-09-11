@@ -10,6 +10,9 @@ class Base{
     public $assets_url = BDP_POP_ASSETS_URL;
     public $option_key = 'bdp_pop_options';
 
+
+    public $token_key = 'bdp_popup_token';
+
     public $data_packed;
 
     /**
