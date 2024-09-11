@@ -15,7 +15,7 @@ class Page_Loader extends Base
     protected $pro_version;
     public $license;
 
-    public $submitted_data;
+    public $submitted_data = [];
     public $options;
 
     public static $inistance;
@@ -37,12 +37,14 @@ class Page_Loader extends Base
 
         $this->options = get_option( $this->option_key, [] );
         $input_array = filter_input_array(INPUT_POST);
-        $this->submitted_data = ! empty( $input_array['data'] ) ? $input_array['data'] : [];
-        if( ! empty($this->submitted_data)){
-            $this->options = $this->submitted_data;
-            $this->update_options();
-        }
+        if( isset($input_array[$this->plugin_prefix]) && ! empty( $input_array[$this->plugin_prefix] ) ){
+            $this->submitted_data = ! empty( $input_array['data'] ) ? $input_array['data'] : [];
+            if( ! empty($this->submitted_data)){
+                $this->options = $this->submitted_data;
+                $this->update_options();
+            }
 
+        }
         $this->run();
     }
     public function update_options()

@@ -27,14 +27,17 @@ $save_data = $this->options;
                 </button>
             </div>
             <?php wp_nonce_field( $this->plugin_prefix, $this->plugin_prefix ); ?>
-            <div class="wcmmq-section-panel content-settings" id="wcmmq-universal-settings">
+            <div class="wcmmq-section-panel api-data" id="wcmmq-api-data">
+                <?php include 'api-data.php'; ?>
+            </div>
+            <div class="wcmmq-section-panel content-settings" id="wcmmq-content-settings">
                 <?php include 'content-settings.php'; ?>
             </div>
             <div class="wcmmq-section-panel universal-settings" id="wcmmq-universal-settings">
                 <?php include 'universal-settings.php'; ?>
             </div>
             <div class="wcmmq-section-panel coupon-toggle" id="coupon-toggle-settings">
-                <?php include 'coupon-toggle.php'; ?>
+                <?php include 'coupon-button.php'; ?>
             </div>
 
             <div class="wcmmq-section-panel no-background wcmmq-full-form-submit-wrapper">

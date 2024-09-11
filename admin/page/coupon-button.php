@@ -3,7 +3,7 @@
         <tr>
             <th class="wcmmq-inside">
                 <div class="wcmmq-table-header-inside">
-                    <h3><?php echo esc_html__( 'Sidebar Coupon Box', 'wcmmq' ); ?></h3>
+                    <h3><?php echo esc_html__( 'Sidebar Coupon Button', 'wcmmq' ); ?></h3>
                 </div>
                 
             </th>

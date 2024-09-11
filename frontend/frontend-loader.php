@@ -47,8 +47,7 @@ class Frontend_Loader extends Base
          */
         // $this->set_options();
         $this->options = get_option( $this->option_key );
-
-
+        
         //Popup and Header will close to the specific date
         $this->closed_date = ! empty( $this->options['closed_date'] ) ? $this->options['closed_date'] : time() + 100;
         if( time() > strtotime($this->closed_date) ) return;
@@ -84,7 +83,7 @@ class Frontend_Loader extends Base
         }
         
         if( ! empty($this->options['coupon_visibility']) ){
-            add_action('wp_body_open',[$this, 'display_couponbox']);
+            add_action('wp_footer',[$this, 'display_couponbox']);
         }
         add_action('init',[$this, 'set_cookie']);
         // dd($_COOKIE);
@@ -151,10 +150,7 @@ class Frontend_Loader extends Base
      * @return void
      */
     public function display_couponbox() {
-        echo '<pre>';
-        print_r($this->options);
-        echo '</pre>';
-        // include $this->base_dir . 'frontend/html/popup-content.php';
+        include $this->base_dir . 'frontend/html/coupon-button.php';
     }
     public function display_header() {
         if( ! $this->popup_as_header ) return;

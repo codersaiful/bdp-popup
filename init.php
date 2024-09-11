@@ -41,7 +41,7 @@ add_action( 'plugins_loaded',function(){
         BDP_Popup\Admin\Admin_Loader::init();
     }
     if( ! is_admin() ){
-
+        BDP_Popup\Frontend\API::init();
         BDP_Popup\Frontend\Frontend_Loader::init();
     }
 } );
