@@ -40,9 +40,8 @@ class Page_Loader extends Base
         $this->submitted_data = ! empty( $input_array['data'] ) ? $input_array['data'] : [];
         if( ! empty($this->submitted_data)){
             $this->options = $this->submitted_data;
+            $this->update_options();
         }
-        
-        $this->update_options();
 
         $this->run();
     }

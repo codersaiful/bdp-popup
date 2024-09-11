@@ -45,7 +45,8 @@ class Frontend_Loader extends Base
          * Otherwise, database value will not work.
          * It's need at the begginng of this contructor. Because, we have to change everything based on value.
          */
-        $this->set_options();
+        // $this->set_options();
+        $this->options = get_option( $this->option_key );
 
 
         //Popup and Header will close to the specific date
@@ -86,7 +87,7 @@ class Frontend_Loader extends Base
             add_action('wp_body_open',[$this, 'display_couponbox']);
         }
         add_action('init',[$this, 'set_cookie']);
-        // var_dump($_COOKIE);
+        // dd($_COOKIE);
     }
     
 
