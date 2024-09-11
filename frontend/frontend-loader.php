@@ -1,6 +1,7 @@
 <?php
 namespace BDP_Popup\Frontend;
 
+use BDP_Popup\Frontend\API;
 use BDP_Popup\Core\Base;
 
 class Frontend_Loader extends Base
@@ -39,6 +40,9 @@ class Frontend_Loader extends Base
 
     public function __construct()
     {
+        $ddd = API::init();
+        $saiful = $ddd->get_remote();
+        
         /**
          * To set $this->options value
          * we have to call at the begging.
