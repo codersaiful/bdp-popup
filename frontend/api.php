@@ -58,7 +58,17 @@ class API extends Base
 
     public function get_remote()
     {
-        
+        $data = array(
+            'access_key' => 'sOdkdSsomeSaiflul',
+        );
+        // Prepare the arguments for wp_remote_post()
+        $args = array(
+            'body' => $data, // Include the data in the body
+            'timeout' => 15, // Set a timeout (optional)
+            'headers' => array(
+                'Content-Type' => 'application/x-www-form-urlencoded', // You can change this if needed
+            ),
+        );
         $response = wp_remote_post( $this->api_url );
         // return [$this->api_url];
         if (is_wp_error($response)) {
