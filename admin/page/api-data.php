@@ -75,7 +75,7 @@
                         // }
                         ?>
                         <input name="data[api_access_token]" id="data[api_access_token]" class="ua_input_number" 
-                        value="<?php echo esc_attr($api_access_token); ?>"  type="password">
+                        value="<?php echo esc_attr($api_access_token); ?>"  type="text">
                     </div>
                 </div>
             </td>
@@ -86,6 +86,30 @@
                 </div> 
             </td>
         </tr> 
+        <?php if( ! empty( $api_site_url ) && ! empty( $api_access_token ) ){ ?>
+        <tr>
+            <td>
+                <div class="wcmmq-form-control">
+                    <div class="form-label col-lg-6">
+                        <label for="data[api_access_token]">Connection Status</label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <?php
+                        $api = \BDP_Popup\Frontend\API::init();
+                        $remote_options = $api->get_remote();
+                        dd($remote_options);
+                        ?>
+                        
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="wcmmq-form-info">
+                    
 
+                </div> 
+            </td>
+        </tr> 
+        <?php } ?>
     </tbody>
 </table>

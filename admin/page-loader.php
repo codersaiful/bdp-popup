@@ -1,6 +1,7 @@
 <?php 
 namespace BDP_Popup\Admin;
 
+use BDP_Popup\Frontend\API;
 use BDP_Popup\Core\Base;
 
 class Page_Loader extends Base
