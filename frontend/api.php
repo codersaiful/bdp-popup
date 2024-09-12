@@ -58,8 +58,9 @@ class API extends Base
 
     public function get_remote()
     {
+        // dd($this->options);
         $data = array(
-            'access_key' => $this->options['api_access_key'] ?? null,
+            'access_key' => $this->options['api_access_token'] ?? null,
         );
         // Prepare the arguments for wp_remote_post()
         $args = array(
