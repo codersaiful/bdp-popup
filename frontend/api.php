@@ -106,10 +106,17 @@ class API extends Base
      */
     public function handle_request($request)
     {
-
-        update_option('saiful_test_data', $request->get_params());
-        // Return a success response.
-        return new \WP_REST_Response( $this->options, $this->http_response_code);
+        $params = $request->get_params();
+        $requested_access_key = $params['access_key'] ?? null;
+        $this_access_key = $this->options['api_access_key'] ?? null;
+        if( ! empty( $this_access_key ) && ! empty( $this_access_key ) &&  $requested_access_key === $this_access_key ) {
+            // Return a success response.
+            return new \WP_REST_Response( $this->options, $this->http_response_code);
+        }
+        // update_option('saiful_test_data', 33);
+        
+        $this->http_response_code = 403;
+        return new \WP_REST_Response( ['status' => false,'message' => 'Access Denied'], $this->http_response_code);
         
     }
 
