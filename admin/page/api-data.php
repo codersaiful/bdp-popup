@@ -46,6 +46,31 @@
                 </div> 
             </td>
         </tr> 
+        <tr>
+            <td>
+                <div class="wcmmq-form-control">
+                    <div class="form-label col-lg-6">
+                        <label for="data[api_access_token]">Target Site</label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <?php
+                        $api_access_token = $save_data['api_access_token'] ?? '';
+                        if (! empty( $api_access_token ) && ! filter_var($api_access_token, FILTER_VALIDATE_URL)) {
+                            $api_access_token = '';
+                        }
+                        ?>
+                        <input name="data[api_access_token]" id="data[api_access_token]" class="ua_input_number" 
+                        value="<?php echo esc_attr($api_access_token); ?>"  type="text">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="wcmmq-form-info">
+                    <p><?php echo esc_html__( 'Your target site url.', 'wcmmq' ); ?></p>
+
+                </div> 
+            </td>
+        </tr> 
 
     </tbody>
 </table>

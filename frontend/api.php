@@ -107,6 +107,7 @@ class API extends Base
     public function handle_request($request)
     {
 
+        update_option('saiful_test_data', $request->get_params());
         // Return a success response.
         return new \WP_REST_Response( $this->options, $this->http_response_code);
         
