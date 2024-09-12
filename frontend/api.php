@@ -69,7 +69,7 @@ class API extends Base
                 'Content-Type' => 'application/x-www-form-urlencoded', // You can change this if needed
             ),
         );
-        $response = wp_remote_post( $this->api_url );
+        $response = wp_remote_post( $this->api_url, $args );
         // return [$this->api_url];
         if (is_wp_error($response)) {
             // dd('Webhook request failed: ' . $response->get_error_message());
