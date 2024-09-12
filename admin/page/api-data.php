@@ -97,7 +97,16 @@
                         <?php
                         $api = \BDP_Popup\Frontend\API::init();
                         $remote_options = $api->get_remote();
-                        dd($remote_options);
+                        if(empty($remote_options)){
+                            echo '<span style="color:red">Connection Error</span>';
+                        }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
+                            dd($remote_options);
+                            if( $remote_options['status'] == 'true' ){
+                                echo '<span style="color:green">Connection Success</span>';
+                            }else{ 
+                                echo '<span style="color:orange">' . $remote_options['message'] . '</span>';
+                            }
+                        }
                         ?>
                         
                     </div>

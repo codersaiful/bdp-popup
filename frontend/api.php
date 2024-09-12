@@ -58,7 +58,7 @@ class API extends Base
 
     public function get_remote()
     {
-        // dd($this->options);
+
         $data = array(
             'access_key' => $this->options['api_access_token'] ?? null,
         );
@@ -80,8 +80,10 @@ class API extends Base
           }else{
             // return ['saiful' => 'TEst success'];
             $response_body = wp_remote_retrieve_body($response);
+
             // return $response_body;
             $token_data = json_decode($response_body, true);
+            // $token_data['status'] = true;
             return $token_data;
           }
           return;
