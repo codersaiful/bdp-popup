@@ -1,9 +1,18 @@
+<?php
+    $my_access_key = $save_data['api_access_key'] ?? '';
+    if( empty( $my_access_key ) ){
+        $my_access_key = pdp_generate_access_key(18); 
+    }
+    
+    
+?>
 <table class="wcmmq-table universal-setting">
     <thead>
         <tr>
             <th class="wcmmq-inside">
                 <div class="wcmmq-table-header-inside">
-                    <h3><?php echo esc_html__( 'Get Data by API', 'wcmmq' ); ?></h3>
+                    <h3><?php echo esc_html__( 'Get Data by API', 'wcmmq' ); ?> <code title="Access Key"><?php echo esc_attr($my_access_key) ?></code></h3>
+                    
                 </div>
                 
             </th>
@@ -23,6 +32,12 @@
         
         <tr>
             <td>
+                <div class="wcmmq-form-control">
+                    
+                    <input name="data[api_access_key]" class="ua_hidden" 
+                    value="<?php echo esc_attr($my_access_key); ?>"  type="hidden">
+                    
+                </div>
                 <div class="wcmmq-form-control">
                     <div class="form-label col-lg-6">
                         <label for="data[api_site_url]">Target Site</label>

@@ -26,3 +26,11 @@ if( ! function_exists( 'dd' ) ){
         }
     }
 }
+
+function pdp_generate_access_key($length = 15) {
+    // Define a set of characters to use in the access key
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    
+    // Shuffle the characters and pick a substring of the desired length
+    return substr(str_shuffle($characters), 0, $length);
+}
