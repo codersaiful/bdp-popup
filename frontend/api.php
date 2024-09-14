@@ -121,7 +121,7 @@ class API extends Base
         // 
         
         $this->http_response_code = 403;
-        return new \WP_REST_Response( ['status' => false,'message' => 'Access Denied'], $this->http_response_code);
+        return new \WP_REST_Response( ['status' => false,'status_message' => 'Access Denied'], $this->http_response_code);
         
     }
 

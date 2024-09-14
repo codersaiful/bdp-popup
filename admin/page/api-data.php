@@ -103,8 +103,8 @@
                             dd($remote_options);
                             if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
                                 echo '<span style="color:green">Connection Success</span>';
-                            }else{ 
-                                echo '<span style="color:orange">' . $remote_options['message'] . '</span>';
+                            }else if( ! empty( $remote_options['status_message'] ) ){ 
+                                echo '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
                             }
                         }
                         ?>
