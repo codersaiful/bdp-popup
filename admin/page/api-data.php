@@ -100,13 +100,14 @@
                         if(empty($remote_options)){
                             echo '<span style="color:red">Connection Error</span>';
                         }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
-                            dd($remote_options);
                             if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
                                 echo '<span style="color:green">Connection Success</span>';
                             }else if( ! empty( $remote_options['status_message'] ) ){ 
                                 echo '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
                             }
                         }
+                        delete_transient( $this->token_key );
+
                         ?>
                         
                     </div>

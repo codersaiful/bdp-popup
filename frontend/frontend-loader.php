@@ -102,7 +102,6 @@ class Frontend_Loader extends Base
             add_action('wp_footer',[$this, 'display_couponbox']);
         }
         add_action('init',[$this, 'set_cookie']);
-        // dd($_COOKIE);
     }
     
     protected function modify_options_based_on_api(){

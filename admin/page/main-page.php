@@ -1,6 +1,5 @@
 <?php
 $save_data = $this->options;
-dd(get_option('saiful_test_data'));
 ?>
 <div class="wrap wcmmq_wrap wcmmq-content">
 

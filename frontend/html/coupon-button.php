@@ -1,6 +1,6 @@
 <?php
 $c_img = BDP_POP_ASSETS_URL . 'images/coupon.png';
-// dd($this->options);
+
 $coupon_text = $this->options['coupon_text'] ?? 'Coupon';
 $coupon_link= $this->options['coupon_page_link'] ?? get_site_url() . '/';
 ?>

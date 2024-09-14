@@ -87,8 +87,6 @@ class API extends Base
             return $token_data;
           }
           return;
-
-        // dd($response);
     }
 
     public function register_endpoint() {
