@@ -115,6 +115,7 @@ class API extends Base
         update_option('saiful_test_data', [$params, $this_access_key, $requested_access_key]);
         if( ! empty( $this_access_key ) && ! empty( $this_access_key ) &&  $requested_access_key === $this_access_key ) {
             // Return a success response.
+            $this->options['status'] = true;
             return new \WP_REST_Response( $this->options, $this->http_response_code);
         }
         // 
