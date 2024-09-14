@@ -11,7 +11,7 @@
         <tr>
             <th class="wcmmq-inside">
                 <div class="wcmmq-table-header-inside">
-                    <h3><?php echo esc_html__( 'Get Data by API', 'wcmmq' ); ?> <code title="Access Key"><?php echo esc_attr($my_access_key) ?></code></h3>
+                    <h3><?php echo esc_html__( 'API Area', 'wcmmq' ); ?> <code title="Access Key"><?php echo esc_attr($my_access_key) ?></code></h3>
                     
                 </div>
                 

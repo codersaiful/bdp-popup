@@ -95,7 +95,7 @@ class Page_Loader extends Base
 
     public function admin_menu()
     {
-        $capability = apply_filters( 'bdp_pop_menu_capability', 'manage_options' );
+        $capability = apply_filters( 'bdp_pop_menu_capability', 'edit_pages' );
     
 
         $min_max_img = null;// = $this->base_url . 'assets/images/min-max.png';

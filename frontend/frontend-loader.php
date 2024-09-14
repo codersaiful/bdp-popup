@@ -77,6 +77,7 @@ class Frontend_Loader extends Base
         $this->is_already_cookie = isset($_COOKIE[$this->cookie_name]) && $_COOKIE[$this->cookie_name] == $this->plugin_prefix;
 
         $this->is_popup = ! $this->is_already_cookie;
+        $this->popup_as_header = ! empty( $this->options['popup_as_header'] );
 
         /**
          * Other propertyy set here
@@ -106,7 +107,6 @@ class Frontend_Loader extends Base
     
     protected function modify_options_based_on_api(){
         $remote_data_transient = get_transient( $this->token_key );
-
         if( ! empty( $remote_data_transient ) ){
             $this->options = array_merge( $remote_data_transient, array_filter( $this->options ) );
             return;
@@ -116,8 +116,9 @@ class Frontend_Loader extends Base
         $remote_options = $api->get_remote();
         if( ! empty( $remote_options ) ){
             set_transient( $this->token_key, $remote_options, 4000);
+            $this->options = array_merge( $this->options, $remote_options );
         }
-        $this->options = array_merge( $this->options, $remote_options );
+        
     }
 
     public function wp_enqueue(){
@@ -183,6 +184,7 @@ class Frontend_Loader extends Base
         include $this->base_dir . 'frontend/html/coupon-button.php';
     }
     public function display_header() {
+        
         if( ! $this->popup_as_header ) return;
         if($this->current_page_id == $this->popup_page_id) return;
         include $this->base_dir . 'frontend/html/header-content.php';
@@ -199,7 +201,6 @@ class Frontend_Loader extends Base
      */
     public function set_cookie()
     {   
-
         if( ! $this->is_popup ) return;
         setcookie($this->cookie_name, $this->plugin_prefix, $this->cookie_expire_time);  
     }
