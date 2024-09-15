@@ -70,7 +70,7 @@ class Frontend_Loader extends Base
         
         $this->cookie_name = $this->plugin_prefix . '_poppup_displayed';
         
-        $expire = ! empty( $this->options['cookie_expire_time'] ) ? $this->options['cookie_expire_time'] : HOUR_IN_SECONDS;
+        $expire = ! empty( $this->options['cookie_expire_time'] ) ? $this->options['cookie_expire_time'] : ( MINUTE_IN_SECONDS * 10 );
         $this->cookie_expire_time = time() + $expire;
 
         

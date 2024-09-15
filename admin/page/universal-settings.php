@@ -78,11 +78,11 @@
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $onehour = HOUR_IN_SECONDS;
+                        $onehour = MINUTE_IN_SECONDS * 10;
                         $cookie_expire_time = $save_data['cookie_expire_time'] ?? $onehour;
                         ?>
                         <input name="data[cookie_expire_time]" id="data[cookie_expire_time]" class="ua_input_number" 
-                        value="<?php echo esc_attr($cookie_expire_time); ?>"  type="text">
+                        value="<?php echo esc_attr($cookie_expire_time); ?>"  type="number" placeholder="<?php echo esc_attr( $onehour ); ?> for 10 minutes">
                     </div>
                 </div>
             </td>
