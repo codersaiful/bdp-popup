@@ -160,6 +160,47 @@ class Frontend_Loader extends Base
 
         wp_enqueue_style($this->plugin_prefix . 'popup-styles', $this->base_url . 'assets/css/popup-styles.css', array(), $this->dev_version);
         wp_enqueue_style($this->plugin_prefix . 'header-styles', $this->base_url . 'assets/css/header-styles.css', array(), $this->dev_version);
+
+        // Add custom styles
+        $this->add_custom_styles();
+    }
+
+    /**
+     * Add custom styles based on settings
+     */
+    private function add_custom_styles() {
+        $custom_css = '';
+        
+        // Popup styles
+        if (!empty($this->options['popup_bg_color'])) {
+            $custom_css .= '.bdp-popup { background-color: ' . esc_attr($this->options['popup_bg_color']) . '; }';
+        }
+        if (!empty($this->options['popup_text_color'])) {
+            $custom_css .= '.bdp-popup { color: ' . esc_attr($this->options['popup_text_color']) . '; }';
+        }
+        if (!empty($this->options['title_font_size'])) {
+            $custom_css .= '.bdp-popup h2, .bdp-popup h4 { font-size: ' . esc_attr($this->options['title_font_size']) . 'px; }';
+        }
+
+        // Button styles
+        if (!empty($this->options['button_bg_color'])) {
+            $custom_css .= '.bdp-popup button, .bdp-popup .button, .bdp-popup .bdp-copy-coupon { background-color: ' . esc_attr($this->options['button_bg_color']) . '; }';
+        }
+        if (!empty($this->options['button_text_color'])) {
+            $custom_css .= '.bdp-popup button, .bdp-popup .button, .bdp-popup .bdp-copy-coupon { color: ' . esc_attr($this->options['button_text_color']) . '; }';
+        }
+
+        // Header bar styles
+        if (!empty($this->options['header_bg_color'])) {
+            $custom_css .= '.bdp-header-wrapper { background-color: ' . esc_attr($this->options['header_bg_color']) . '; }';
+        }
+        if (!empty($this->options['header_text_color'])) {
+            $custom_css .= '.bdp-header-wrapper { color: ' . esc_attr($this->options['header_text_color']) . '; }';
+        }
+
+        if (!empty($custom_css)) {
+            wp_add_inline_style($this->plugin_prefix . 'popup-styles', $custom_css);
+        }
     }
 
     /**

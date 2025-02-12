@@ -97,7 +97,6 @@ class Page_Loader extends Base
     {
         $capability = apply_filters( 'bdp_pop_menu_capability', 'edit_pages' );
     
-
         $min_max_img = null;// = $this->base_url . 'assets/images/min-max.png';
         $page_title = "BDPlugin Popup";
         $menu_title = "Popup"; 
@@ -109,8 +108,13 @@ class Page_Loader extends Base
 
         add_submenu_page( $this->main_slug, esc_html__( 'Browse Plugins', 'bdp_pop' ),  __( 'Browse Plugins', 'bdp_pop' ), $capability, 'bdp_pop-browse-plugins', [$this, 'browse_plugins_html'] );
 
-        add_submenu_page($this->main_slug, 'Documentation', 'Documentation', 'read','https://codeastrology.com/min-max-quantity/documentation/');
+        add_submenu_page($this->main_slug, esc_html__('Documentation', 'bdp_pop'), esc_html__('Documentation', 'bdp_pop'), 'read', 'bdp_pop-documentation', [$this, 'documentation_html']);
+    }
 
+    public function documentation_html()
+    {
+        include $this->topbar_file;
+        include $this->page_folder_dir . 'documentation.php';
     }
 
     public function admin_enqueue_scripts()
@@ -125,6 +129,10 @@ class Page_Loader extends Base
             wp_enqueue_script('jquery-ui-datepicker');
             wp_enqueue_style('jquery-ui', 'https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css');
             
+            // Enqueue WordPress color picker
+            wp_enqueue_style('wp-color-picker');
+            wp_enqueue_script('wp-color-picker');
+            
             wp_register_style( $this->plugin_prefix . '-icon-font', $this->base_url . 'assets/fontello/css/wcmmq-icon.css', false, $this->dev_version );
             wp_enqueue_style( $this->plugin_prefix . '-icon-font' );
 
@@ -133,7 +141,7 @@ class Page_Loader extends Base
             wp_enqueue_style( $this->plugin_prefix . '-icon-animation' );
 
             $js_handle = $this->plugin_prefix . '-backend';
-            wp_register_script( $js_handle, $this->base_url . 'assets/js/admin.js', array( 'jquery','select2','jquery-ui-datepicker' ), $this->dev_version, true );
+            wp_register_script( $js_handle, $this->base_url . 'assets/js/admin.js', array( 'jquery','select2','jquery-ui-datepicker','wp-color-picker' ), $this->dev_version, true );
             wp_enqueue_script( $js_handle );
 
             
