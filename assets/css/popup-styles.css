@@ -34,11 +34,11 @@ div#bdp-popup-wrapper div.bdp-popup {
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .bdp-left-side>img {
-    width: 120px;
-    height: auto;
+    width: auto;
+    height: 195px;
 }
 .bdp-right-side {
     display: flex;

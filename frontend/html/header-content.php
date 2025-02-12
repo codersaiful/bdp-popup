@@ -7,12 +7,16 @@ $coupon = $data['coupon'] ?? '';
     <div class="bdp-popup-inside">
         <div class="bdp-popup">
             <div class="bdp-popup-body">
+
+            <?php
+                $popupImg = !empty($this->options['popup_image']) ? $this->options['popup_image'] : null;
+                if( ! empty( $popupImg ) ){ ?>
                 <div class="bdp-left-side">
-                    <?php
-                    $popupImg = !empty($this->options['popup_image']) ? $this->options['popup_image'] : BDP_POP_ASSETS_URL . 'images/popup-left.png';
-                    ?>
                     <img src="<?php echo esc_url($popupImg); ?>" />
                 </div>
+                <?php } ?>
+
+                
                 <div class="bdp-right-side">
                     <?php if( ! empty( $title ) ){ ?>
                     <h4><?php echo esc_html( $title ); ?></h4>

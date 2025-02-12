@@ -129,6 +129,7 @@ class Page_Loader extends Base
             wp_enqueue_script('jquery-ui-datepicker');
             wp_enqueue_style('jquery-ui', 'https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css');
             
+            wp_enqueue_media();
             // Enqueue WordPress color picker
             wp_enqueue_style('wp-color-picker');
             wp_enqueue_script('wp-color-picker');

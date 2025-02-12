@@ -13,12 +13,14 @@ $imgage_url = $data['image_url'] ?? BDP_POP_ASSETS_URL . 'images/popup-left.png'
                 <span class="bdp-popup-close">x</span>
             </div>
             <div class="bdp-popup-body">
+                <?php
+                $popupImg = !empty($this->options['popup_image']) ? $this->options['popup_image'] : null;
+                if( ! empty( $popupImg ) ){ ?>
                 <div class="bdp-left-side">
-                    <?php
-                    $popupImg = !empty($this->options['popup_image']) ? $this->options['popup_image'] : BDP_POP_ASSETS_URL . 'images/popup-left.png';
-                    ?>
                     <img src="<?php echo esc_url($popupImg); ?>" />
                 </div>
+                <?php } ?>
+                
                 <div class="bdp-right-side">
                     <?php 
                     // var_dump($this);
