@@ -5,7 +5,7 @@ $coupon_text = $this->options['coupon_text'] ?? 'Coupon';
 $coupon_link= $this->options['coupon_page_link'] ?? get_site_url() . '/';
 ?>
 <div class="bdp-coupon-button-wrapper">
-    <a href="<?php echo esc_url($coupon_link); ?>" class="coupon-link">
+    <a href="<?php echo esc_url($coupon_link); ?>" class="coupon-link" target="_blank">
         <img src="<?php echo esc_url($c_img); ?>" alt="Coupon">
         <span class="coupon-text"><?php echo esc_html($coupon_text); ?></span>
     </a>
