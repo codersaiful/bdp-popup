@@ -141,29 +141,34 @@
             </td>
         </tr> 
 
-
+        <!-- Popup Image -->
         <tr>
             <td>
                 <div class="wcmmq-form-control">
                     <div class="form-label col-lg-6">
-                        <label for="data[image_url]">Image URL</label>
+                        <label for="data[popup_image]"><?php echo esc_html__('Popup Image', 'bdp-popup'); ?></label>
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $image_url = $save_data['image_url'] ?? '';
+                        $popup_image = $save_data['popup_image'] ?? '';
                         ?>
-                        <input name="data[image_url]" id="data[browse_link]" class="ua_input_number" 
-                        value="<?php echo esc_attr($image_url); ?>"  type="text">
+                        <div class="image-preview-wrapper">
+                            <img id="popup-image-preview" src="<?php echo esc_url($popup_image ? $popup_image : BDP_POP_ASSETS_URL . 'images/popup-left.png'); ?>" 
+                                 style="max-width: 200px; height: auto;" />
+                        </div>
+                        <input type="hidden" name="data[popup_image]" id="popup_image" value="<?php echo esc_attr($popup_image); ?>" />
+                        <input type="button" class="button button-secondary" value="<?php echo esc_attr__('Upload Image', 'bdp-popup'); ?>" id="upload_popup_image_button" />
+                        <input type="button" class="button button-secondary" value="<?php echo esc_attr__('Remove Image', 'bdp-popup'); ?>" id="remove_popup_image_button" <?php echo empty($popup_image) ? 'style="display:none;"' : ''; ?> />
+                        <p class="description"><?php echo esc_html__('Upload or select an image for the popup and header. Recommended size: 300x400px', 'bdp-popup'); ?></p>
                     </div>
                 </div>
             </td>
             <td>
                 <div class="wcmmq-form-info">
-                    Input your full image path. Size should not getter then 500px for height or width.
+                    <p><?php echo esc_html__('This image will be displayed in both popup and header content', 'bdp-popup'); ?></p>
                 </div> 
             </td>
-        </tr> 
-
+        </tr>
 
     </tbody>
 </table>

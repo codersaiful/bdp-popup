@@ -1,6 +1,48 @@
 jQuery(function($) {
     'use strict';
     $(document).ready(function() {
+        // Media Uploader
+        var mediaUploader;
+        console.log(mediaUploader);
+        $('#upload_popup_image_button').on('click', function(e) {
+            e.preventDefault();
+            console.log(mediaUploader);
+            // If the uploader object has already been created, reopen the dialog
+            if (mediaUploader) {
+                mediaUploader.open();
+                return;
+            }
+            
+            // Create the media uploader
+            mediaUploader = wp.media({
+                title: 'Choose Image',
+                button: {
+                    text: 'Use this image'
+                },
+                multiple: false
+            });
+            
+            // When an image is selected, run a callback
+            mediaUploader.on('select', function() {
+                var attachment = mediaUploader.state().get('selection').first().toJSON();
+                $('#popup_image').val(attachment.url);
+                $('#popup-image-preview').attr('src', attachment.url);
+                $('#remove_popup_image_button').show();
+            });
+            
+            // Open the uploader dialog
+            mediaUploader.open();
+        });
+        
+        // Remove image button
+        $('#remove_popup_image_button').on('click', function(e) {
+            e.preventDefault();
+            var defaultImage = WCMMQ_ADMIN_DATA.site_url + '/wp-content/plugins/bdp-popup/assets/images/popup-left.png';
+            $('#popup_image').val('');
+            $('#popup-image-preview').attr('src', defaultImage);
+            $(this).hide();
+        });
+
         // Initialize datepicker for closed_date field
         $('input[name="data[closed_date]"]').datepicker({
             dateFormat: 'yy-mm-dd',

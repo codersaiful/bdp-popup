@@ -9,9 +9,9 @@ $coupon = $data['coupon'] ?? '';
             <div class="bdp-popup-body">
                 <div class="bdp-left-side">
                     <?php
-                    $popupImg = BDP_POP_ASSETS_URL . 'images/popup-left.png';
+                    $popupImg = !empty($this->options['popup_image']) ? $this->options['popup_image'] : BDP_POP_ASSETS_URL . 'images/popup-left.png';
                     ?>
-                    <img src="<?php echo esc_url( $popupImg ); ?>"/>
+                    <img src="<?php echo esc_url($popupImg); ?>" />
                 </div>
                 <div class="bdp-right-side">
                     <?php if( ! empty( $title ) ){ ?>
