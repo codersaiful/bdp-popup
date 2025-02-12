@@ -27,22 +27,22 @@ jQuery(function($) {
                 switch(inputId) {
                     // Popup styles
                     case 'data[popup_bg_color]':
-                        $('#preview-popup-wrapper .bdp-popup').css('background-color', colorValue);
+                        $('.preview-popup-wrapper .bdp-popup').css('background-color', colorValue);
                         break;
                     case 'data[popup_header_bg]':
-                        $('#preview-popup-wrapper .bdp-pop-header').css('background-color', colorValue);
+                        $('.preview-popup-wrapper .bdp-pop-header').css('background-color', colorValue);
                         break;
                     case 'data[popup_title_color]':
-                        $('#preview-popup-wrapper .bdp-right-side h2').css('color', colorValue);
+                        $('.preview-popup-wrapper .bdp-right-side h2').css('color', colorValue);
                         break;
                     case 'data[coupon_bg_color]':
-                        $('#preview-popup-wrapper .coupon.bdp-coupon-code').css('background-color', colorValue);
+                        $('.preview-popup-wrapper .coupon.bdp-coupon-code').css('background-color', colorValue);
                         break;
                     case 'data[coupon_text_color]':
-                        $('#preview-popup-wrapper .coupon.bdp-coupon-code').css('color', colorValue);
+                        $('.preview-popup-wrapper .coupon.bdp-coupon-code').css('color', colorValue);
                         break;
                     case 'data[copy_text_color]':
-                        $('#preview-popup-wrapper .bdp-copy-coupon').css('color', colorValue);
+                        $('.preview-popup-wrapper .bdp-copy-coupon').css('color', colorValue);
                         break;
 
                     // Header bar styles
@@ -63,7 +63,7 @@ jQuery(function($) {
         // Handle font size changes
         $('#data\\[title_font_size\\]').on('input', function() {
             var fontSize = $(this).val() + 'px';
-            $('#preview-popup-wrapper .bdp-right-side h2').css('font-size', fontSize);
+            $('.preview-popup-wrapper .bdp-right-side h2').css('font-size', fontSize);
         });
     });
 }); 

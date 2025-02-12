@@ -207,4 +207,55 @@ class Base{
     {
         return $this->data_packed[$name] ?? null;
     }
+
+    /**
+     * Add custom styles based on settings
+     */
+    protected function add_custom_styles() {
+        $custom_css = '';
+        
+        // Popup styles
+        if (!empty($this->options['popup_bg_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper div.bdp-popup { background-color: ' . esc_attr($this->options['popup_bg_color']) . '; }';
+        }
+        if (!empty($this->options['popup_header_bg'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-pop-header { background-color: ' . esc_attr($this->options['popup_header_bg']) . '; }';
+        }
+        if (!empty($this->options['popup_title_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-right-side h2 { color: ' . esc_attr($this->options['popup_title_color']) . '; }';
+        }
+        if (!empty($this->options['popup_text_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-right-side p { color: ' . esc_attr($this->options['popup_text_color']) . '; }';
+        }
+        if (!empty($this->options['title_font_size'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-right-side h2 { font-size: ' . esc_attr($this->options['title_font_size']) . 'px; line-height: ' . (intval($this->options['title_font_size']) + 2) . 'px; }';
+        }
+
+        // Coupon styles
+        if (!empty($this->options['coupon_bg_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .coupon.bdp-coupon-code { background-color: ' . esc_attr($this->options['coupon_bg_color']) . '; }';
+        }
+        if (!empty($this->options['coupon_text_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .coupon.bdp-coupon-code { color: ' . esc_attr($this->options['coupon_text_color']) . '; }';
+        }
+        if (!empty($this->options['copy_text_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper p.bdp-copy-coupon { color: ' . esc_attr($this->options['copy_text_color']) . '; }';
+        }
+
+        // Header bar styles
+        if (!empty($this->options['header_bg_color'])) {
+            $custom_css .= 'body div#bdp-header-wrapper.bdp-header-wrapper{ background-color: ' . esc_attr($this->options['header_bg_color']) . '; }';
+        }
+        if (!empty($this->options['header_text_color'])) {
+            $custom_css .= 'body div#bdp-header-wrapper.bdp-header-wrapper .bdp-right-side>h4{ color: ' . esc_attr($this->options['header_text_color']) . '; }';
+        }
+        if (!empty($this->options['header_coupon_bg'])) {
+            $custom_css .= 'body div#bdp-header-wrapper.bdp-header-wrapper .coupon.bdp-coupon-code{ background-color: ' . esc_attr($this->options['header_coupon_bg']) . '; }';
+        }
+
+
+        if (!empty($custom_css)) {
+            wp_add_inline_style($this->plugin_prefix . 'popup-styles', $custom_css);
+        }
+    }
 }

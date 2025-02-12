@@ -169,7 +169,7 @@ class Page_Loader extends Base
 
         }
 
-        
+        $this->add_custom_styles();
     }
 
 

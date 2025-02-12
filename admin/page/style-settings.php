@@ -88,6 +88,28 @@ $save_data = $this->options;
                 </div> 
             </td>
         </tr>
+        <!-- Popup Text Color -->
+        <tr>
+            <td>
+                <div class="wcmmq-form-control">
+                    <div class="form-label col-lg-6">
+                        <label for="data[popup_text_color]"><?php echo esc_html__('Text Color', 'bdp-popup'); ?></label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <?php
+                        $popup_title_color = $save_data['popup_text_color'] ?? '#6d6d6d';
+                        ?>
+                        <input type="text" name="data[popup_text_color]" id="data[popup_text_color]" class="bdp-color-picker" 
+                        value="<?php echo esc_attr($popup_title_color); ?>">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="wcmmq-form-info">
+                    <p><?php echo esc_html__('Color for popup title text', 'bdp-popup'); ?></p>
+                </div> 
+            </td>
+        </tr>
 
         <!-- Title Font Size -->
         <tr>
@@ -273,7 +295,7 @@ $save_data = $this->options;
 <div class="style-preview-section">
                     <h4><?php echo esc_html__('Live Preview', 'bdp-popup'); ?></h4>
                     <div class="preview-popup">
-                        <div id="preview-popup-wrapper" class="bdp-popup-wrapper" style="position: relative; height: 300px; background: #a5a5a5e0;">
+                        <div id="bdp-popup-wrapper" class="bdp-popup-wrapper preview-popup-wrapper" style="position: relative; height: 300px; background: #fff;">
                             <div class="bdp-popup-inside">
                                 <div class="bdp-popup">
                                     <div class="bdp-pop-header">
