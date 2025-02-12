@@ -121,6 +121,10 @@ class Page_Loader extends Base
         if( strpos( $s_id, $this->plugin_prefix ) !== false ){
             add_filter('admin_footer_text',[$this, 'admin_footer_text']);
             
+            // Enqueue WordPress date picker
+            wp_enqueue_script('jquery-ui-datepicker');
+            wp_enqueue_style('jquery-ui', 'https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css');
+            
             wp_register_style( $this->plugin_prefix . '-icon-font', $this->base_url . 'assets/fontello/css/wcmmq-icon.css', false, $this->dev_version );
             wp_enqueue_style( $this->plugin_prefix . '-icon-font' );
 
@@ -129,7 +133,7 @@ class Page_Loader extends Base
             wp_enqueue_style( $this->plugin_prefix . '-icon-animation' );
 
             $js_handle = $this->plugin_prefix . '-backend';
-            wp_register_script( $js_handle, $this->base_url . 'assets/js/admin.js', array( 'jquery','select2' ), $this->dev_version, true );
+            wp_register_script( $js_handle, $this->base_url . 'assets/js/admin.js', array( 'jquery','select2','jquery-ui-datepicker' ), $this->dev_version, true );
             wp_enqueue_script( $js_handle );
 
             
