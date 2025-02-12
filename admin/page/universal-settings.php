@@ -154,6 +154,37 @@
         </tr> 
         
 
+        <tr>
+            <td>
+                <div class="wcmmq-form-control">
+                    <div class="form-label col-lg-6">
+                        <label for="data[topbar_position]">Header Position</label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <?php
+                        $header_position_chk = '';
+                        $topbar_position = $save_data['topbar_position'] ?? '';
+                        if(!empty($topbar_position)){
+                            $header_position_chk = 'checked';
+                        }
+
+                        ?>
+                        <label class="switch reverse">
+                            <input value="1" name="data[topbar_position]"
+                                <?php echo $header_position_chk; /* finding checked or null */ ?> type="checkbox" id="_tracker">
+                            <div class="slider round"><!--ADDED HTML -->
+                                <span class="on"><?php echo esc_html__('Top','wcmmq');?></span><span class="off"> <?php echo esc_html__('Bottom','wcmmq');?></span><!--END-->
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="wcmmq-form-info">
+                    Switch to show and hide Copun text with title for header.
+                </div> 
+            </td>
+        </tr> 
 
 
     </tbody>

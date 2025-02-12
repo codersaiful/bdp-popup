@@ -103,8 +103,21 @@ class Frontend_Loader extends Base
             add_action('wp_footer',[$this, 'display_couponbox']);
         }
         add_action('init',[$this, 'set_cookie']);
+
+        //adding body class for frontend 
+        add_filter('body_class', [$this, 'add_body_class']);
     }
     
+
+    public function add_body_class($classes){
+        // $classes[] = 'bdp-popup-main-body';
+        if( ! empty($this->options['topbar_position']) ){
+            $classes[] = 'bdp-popup-bottom';
+        }else{
+            $classes[] = 'bdp-popup-top';
+        }
+        return $classes;
+    }
     protected function modify_options_based_on_api(){
         $remote_data_transient = get_transient( $this->token_key );
         if( ! empty( $remote_data_transient ) ){

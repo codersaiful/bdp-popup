@@ -46,3 +46,13 @@ div#bdp-header-wrapper .coupon.bdp-coupon-code {
     color: white;
     border-color: #ec7aff;
 }
+body.bdp-popup-bottom div#bdp-header-wrapper.bdp-header-wrapper{
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+body.bdp-popup-bottom {
+    padding-bottom: 65px;
+}
