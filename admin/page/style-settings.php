@@ -332,6 +332,7 @@ $save_data = $this->options;
     z-index: 9999;
     box-shadow: 4px 1px 18px 0 #a1a1a17a;
     transform: scale(.5);
+    transform-origin: bottom right;
 }
 .preview-popup {
     padding: 20px;
