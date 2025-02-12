@@ -173,29 +173,38 @@ class Frontend_Loader extends Base
         
         // Popup styles
         if (!empty($this->options['popup_bg_color'])) {
-            $custom_css .= '.bdp-popup { background-color: ' . esc_attr($this->options['popup_bg_color']) . '; }';
+            $custom_css .= 'div#bdp-popup-wrapper div.bdp-popup { background-color: ' . esc_attr($this->options['popup_bg_color']) . '; }';
         }
-        if (!empty($this->options['popup_text_color'])) {
-            $custom_css .= '.bdp-popup { color: ' . esc_attr($this->options['popup_text_color']) . '; }';
+        if (!empty($this->options['popup_header_bg'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-pop-header { background-color: ' . esc_attr($this->options['popup_header_bg']) . '; }';
+        }
+        if (!empty($this->options['popup_title_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-right-side h2 { color: ' . esc_attr($this->options['popup_title_color']) . '; }';
         }
         if (!empty($this->options['title_font_size'])) {
-            $custom_css .= '.bdp-popup h2, .bdp-popup h4 { font-size: ' . esc_attr($this->options['title_font_size']) . 'px; }';
+            $custom_css .= 'div#bdp-popup-wrapper .bdp-right-side h2 { font-size: ' . esc_attr($this->options['title_font_size']) . 'px; line-height: ' . (intval($this->options['title_font_size']) + 2) . 'px; }';
         }
 
-        // Button styles
-        if (!empty($this->options['button_bg_color'])) {
-            $custom_css .= '.bdp-popup button, .bdp-popup .button, .bdp-popup .bdp-copy-coupon { background-color: ' . esc_attr($this->options['button_bg_color']) . '; }';
+        // Coupon styles
+        if (!empty($this->options['coupon_bg_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .coupon.bdp-coupon-code { background-color: ' . esc_attr($this->options['coupon_bg_color']) . '; }';
         }
-        if (!empty($this->options['button_text_color'])) {
-            $custom_css .= '.bdp-popup button, .bdp-popup .button, .bdp-popup .bdp-copy-coupon { color: ' . esc_attr($this->options['button_text_color']) . '; }';
+        if (!empty($this->options['coupon_text_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper .coupon.bdp-coupon-code { color: ' . esc_attr($this->options['coupon_text_color']) . '; }';
+        }
+        if (!empty($this->options['copy_text_color'])) {
+            $custom_css .= 'div#bdp-popup-wrapper p.bdp-copy-coupon { color: ' . esc_attr($this->options['copy_text_color']) . '; }';
         }
 
         // Header bar styles
         if (!empty($this->options['header_bg_color'])) {
-            $custom_css .= '.bdp-header-wrapper { background-color: ' . esc_attr($this->options['header_bg_color']) . '; }';
+            $custom_css .= 'div#bdp-header-wrapper { background-color: ' . esc_attr($this->options['header_bg_color']) . '; }';
         }
         if (!empty($this->options['header_text_color'])) {
-            $custom_css .= '.bdp-header-wrapper { color: ' . esc_attr($this->options['header_text_color']) . '; }';
+            $custom_css .= 'div#bdp-header-wrapper, div#bdp-header-wrapper .bdp-right-side>h4 { color: ' . esc_attr($this->options['header_text_color']) . '; }';
+        }
+        if (!empty($this->options['header_coupon_bg'])) {
+            $custom_css .= 'div#bdp-header-wrapper .coupon.bdp-coupon-code { background-color: ' . esc_attr($this->options['header_coupon_bg']) . '; }';
         }
 
         if (!empty($custom_css)) {

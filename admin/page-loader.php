@@ -161,6 +161,11 @@ class Page_Loader extends Base
             wp_register_style( $css_handle, $this->base_url . 'assets/css/backend.css', false, $this->dev_version );
             wp_enqueue_style( $css_handle );
             
+            //New frontend styles added backend for preveiw popup in backend
+            wp_enqueue_style($this->plugin_prefix . 'popup-styles', $this->base_url . 'assets/css/popup-styles.css', array(), $this->dev_version);
+            wp_enqueue_style($this->plugin_prefix . 'header-styles', $this->base_url . 'assets/css/header-styles.css', array(), $this->dev_version);
+
+            
 
         }
 
