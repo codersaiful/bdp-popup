@@ -1,50 +1,7 @@
 <?php
 $save_data = $this->options;
 ?>
-<table class="wcmmq-table style-setting">
-    <thead>
-        <tr>
-            <th class="wcmmq-inside" colspan="2">
-                <div class="wcmmq-table-header-inside">
-                    <h3><?php echo esc_html__( 'Style Settings', 'bdp-popup' ); ?></h3>
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="2">
-                <div class="style-preview-section">
-                    <h4><?php echo esc_html__('Live Preview', 'bdp-popup'); ?></h4>
-                    <div class="preview-popup">
-                        <div id="preview-popup-wrapper" class="bdp-popup-wrapper" style="position: relative; height: 300px; background: #a5a5a5e0;">
-                            <div class="bdp-popup-inside">
-                                <div class="bdp-popup">
-                                    <div class="bdp-pop-header">
-                                        <span class="bdp-popup-close">x</span>
-                                    </div>
-                                    <div class="bdp-popup-body">
-                                        <div class="bdp-left-side">
-                                            <img src="<?php echo esc_url(BDP_POP_ASSETS_URL . 'images/popup-left.png'); ?>" />
-                                        </div>
-                                        <div class="bdp-right-side">
-                                            <h2>Preview Title</h2>
-                                            <p>This is a preview of how your popup will look.</p>
-                                            <div class="coupon-wrapper">
-                                                <div class="coupon bdp-coupon-code">SAMPLE10</div>
-                                                <p class="bdp-copy-coupon">Copy Coupon</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
 
 <table class="wcmmq-table style-setting">
     <thead>
@@ -313,13 +270,46 @@ $save_data = $this->options;
         </tr>
     </tbody>
 </table>
-
+<div class="style-preview-section">
+                    <h4><?php echo esc_html__('Live Preview', 'bdp-popup'); ?></h4>
+                    <div class="preview-popup">
+                        <div id="preview-popup-wrapper" class="bdp-popup-wrapper" style="position: relative; height: 300px; background: #a5a5a5e0;">
+                            <div class="bdp-popup-inside">
+                                <div class="bdp-popup">
+                                    <div class="bdp-pop-header">
+                                        <span class="bdp-popup-close">x</span>
+                                    </div>
+                                    <div class="bdp-popup-body">
+                                        <div class="bdp-left-side">
+                                            <img src="<?php echo esc_url(BDP_POP_ASSETS_URL . 'images/popup-left.png'); ?>" />
+                                        </div>
+                                        <div class="bdp-right-side">
+                                            <h2>Preview Title</h2>
+                                            <p>This is a preview of how your popup will look.</p>
+                                            <div class="coupon-wrapper">
+                                                <div class="coupon bdp-coupon-code">SAMPLE10</div>
+                                                <p class="bdp-copy-coupon">Copy Coupon</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 <style>
 .style-preview-section {
     padding: 20px;
     background: #f8f9fa;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    border-radius: 0px;
+    margin-bottom: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 800px;
+    z-index: 9999;
+    box-shadow: 4px 1px 18px 0 #a1a1a17a;
+    transform: scale(.5);
 }
 .preview-popup {
     padding: 20px;
