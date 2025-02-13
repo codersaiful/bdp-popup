@@ -61,14 +61,16 @@ span.bdp-popup-close {
     top: 7px;
     color: white;
     cursor: pointer;
-    background: #87325a91;
+    background: #06040591;
     display: inline-block;
     padding: 4px 10px;
     font-size: 14px;
     line-height: 12px;
     height: 23px;
-    border-radius: 4px;
-    z-index: 1;
+    border-radius: 2px;
+    z-index: 16;
+    font-family: sans-serif;
+    font-weight: normal;
 }
 
 .bdp-pop-header {
