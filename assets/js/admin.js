@@ -71,6 +71,9 @@ jQuery(function($) {
                     case 'data[popup_bg_color]':
                         $('.preview-popup-wrapper .bdp-popup').css('background-color', colorValue);
                         break;
+                    case 'data[popup_text_color]':
+                        $('div#bdp-popup-wrapper .bdp-right-side>p').css('color', colorValue);
+                        break;
                     case 'data[popup_header_bg]':
                         $('.preview-popup-wrapper .bdp-pop-header').css('background-color', colorValue);
                         break;
