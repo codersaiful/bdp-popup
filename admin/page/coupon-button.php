@@ -44,24 +44,17 @@
             <td>
                 <div class="wcmmq-form-control">
                     <div class="form-label col-lg-6">
-                        <label for="data[popup_as_header]">Coupon Button Visibility</label>
+                        <label for="data[coupon_visibility]">Coupon Button Visibility</label>
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $header_chk = '';
-                        $popup_as_header = $save_data['coupon_visibility'] ?? '';
-                        if(!empty($popup_as_header)){
-                            $header_chk = 'checked';
-                        }
-                        
+                        $coupon_visibility = $save_data['coupon_visibility'] ?? 'off';
+                        $selected_value = !empty($coupon_visibility) && $coupon_visibility == 'on' ? 'on' : 'off';
                         ?>
-                        <label class="switch">
-                            <input value="1" name="data[coupon_visibility]"
-                                <?php echo $header_chk; /* finding checked or null */ ?> type="checkbox" id="_tracker">
-                            <div class="slider round"><!--ADDED HTML -->
-                                <span class="on"><?php echo esc_html__('Show','wcmmq');?></span><span class="off"> <?php echo esc_html__('Hide','wcmmq');?></span><!--END-->
-                            </div>
-                        </label>
+                        <select name="data[coupon_visibility]" id="data[coupon_visibility]" class="ua_input_select">
+                            <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('Show', 'wcmmq'); ?></option>
+                            <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('Hide', 'wcmmq'); ?></option>
+                        </select>
                     </div>
                 </div>
             </td>

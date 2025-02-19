@@ -22,21 +22,15 @@
                         <label for="data[visibility_all]">Visibility Header and Popup</label>
                     </div>
                     <div class="form-field col-lg-6">
+
                         <?php
-                        $header_chk = '';
-                        $visibility_all = $save_data['visibility_all'] ?? '';
-                        if(!empty($visibility_all)){
-                            $header_chk = 'checked';
-                        }
-                        
+                        $visibility_all = $save_data['visibility_all'] ?? 'off';
+                        $selected_value = !empty($visibility_all) && $visibility_all == 'on' ? 'on' : 'off';
                         ?>
-                        <label class="switch">
-                            <input value="1" name="data[visibility_all]"
-                                <?php echo $header_chk; /* finding checked or null */ ?> type="checkbox" id="_tracker">
-                            <div class="slider round"><!--ADDED HTML -->
-                                <span class="on"><?php echo esc_html__('ON','wcmmq');?></span><span class="off"> <?php echo esc_html__('OFF','wcmmq');?></span><!--END-->
-                            </div>
-                        </label>
+                        <select name="data[visibility_all]" id="data[visibility_all]" class="ua_input_select">
+                            <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('ON', 'wcmmq'); ?></option>
+                            <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('OFF', 'wcmmq'); ?></option>
+                        </select>
                     </div>
                 </div>
             </td>
@@ -107,21 +101,16 @@
                         <label for="data[popup_as_header]">Header Topbar</label>
                     </div>
                     <div class="form-field col-lg-6">
-                        <?php
-                        $header_chk = '';
-                        $popup_as_header = $save_data['popup_as_header'] ?? '';
-                        if(!empty($popup_as_header)){
-                            $header_chk = 'checked';
-                        }
-                        
+
+                    <?php
+                        $popup_as_header = $save_data['popup_as_header'] ?? 'off';
+                        $selected_value = !empty($popup_as_header) && $popup_as_header == 'on' ? 'on' : 'off';
                         ?>
-                        <label class="switch">
-                            <input value="1" name="data[popup_as_header]"
-                                <?php echo $header_chk; /* finding checked or null */ ?> type="checkbox" id="_tracker">
-                            <div class="slider round"><!--ADDED HTML -->
-                                <span class="on"><?php echo esc_html__('ON','wcmmq');?></span><span class="off"> <?php echo esc_html__('OFF','wcmmq');?></span><!--END-->
-                            </div>
-                        </label>
+                        <select name="data[popup_as_header]" id="data[popup_as_header]" class="ua_input_select">
+                            <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('ON', 'wcmmq'); ?></option>
+                            <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('OFF', 'wcmmq'); ?></option>
+                        </select>
+
                     </div>
                 </div>
             </td>
@@ -161,21 +150,16 @@
                         <label for="data[topbar_position]">Header Position</label>
                     </div>
                     <div class="form-field col-lg-6">
-                        <?php
-                        $header_position_chk = '';
-                        $topbar_position = $save_data['topbar_position'] ?? '';
-                        if(!empty($topbar_position)){
-                            $header_position_chk = 'checked';
-                        }
 
+                    <?php
+                        $topbar_position = $save_data['topbar_position'] ?? 'top';
+                        $selected_value = !empty($topbar_position) && $topbar_position == 'top' ? 'top' : 'bottom';
                         ?>
-                        <label class="switch reverse">
-                            <input value="1" name="data[topbar_position]"
-                                <?php echo $header_position_chk; /* finding checked or null */ ?> type="checkbox" id="_tracker">
-                            <div class="slider round"><!--ADDED HTML -->
-                                <span class="on"><?php echo esc_html__('Top','wcmmq');?></span><span class="off"> <?php echo esc_html__('Bottom','wcmmq');?></span><!--END-->
-                            </div>
-                        </label>
+                        <select name="data[topbar_position]" id="data[topbar_position]" class="ua_input_select">
+                            <option value="top" <?php selected($selected_value, 'top'); ?>><?php echo esc_html__('Top', 'wcmmq'); ?></option>
+                            <option value="bottom" <?php selected($selected_value, 'bottom'); ?>><?php echo esc_html__('Bottom', 'wcmmq'); ?></option>
+                        </select>                        
+                        
                     </div>
                 </div>
             </td>

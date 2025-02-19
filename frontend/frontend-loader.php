@@ -77,14 +77,14 @@ class Frontend_Loader extends Base
         $this->is_already_cookie = isset($_COOKIE[$this->cookie_name]) && $_COOKIE[$this->cookie_name] == $this->plugin_prefix;
 
         $this->is_popup = ! $this->is_already_cookie;
-        $this->popup_as_header = ! empty( $this->options['popup_as_header'] );
+        $this->popup_as_header = ! empty( $this->options['popup_as_header'] ) && $this->options['popup_as_header'] == 'on';
 
         /**
          * Other propertyy set here
          */
         $this->popup_page_id = ! empty( $this->options['popup_page_id'] ) ? $this->options['popup_page_id'] : null;
 
-        if( ! empty($this->options['visibility_all']) ){
+        if( ! empty($this->options['visibility_all']) && $this->options['visibility_all'] == 'on'){
             /**
              * wp_enqueue_scripts calling should first, because I have also calculate 
              * because I have define and check 
@@ -99,7 +99,7 @@ class Frontend_Loader extends Base
 
         }
         
-        if( ! empty($this->options['coupon_visibility']) ){
+        if( ! empty($this->options['coupon_visibility']) && $this->options['coupon_visibility'] == 'on' ){
             add_action('wp_footer',[$this, 'display_couponbox']);
         }
         add_action('init',[$this, 'set_cookie']);
@@ -111,7 +111,7 @@ class Frontend_Loader extends Base
 
     public function add_body_class($classes){
         // $classes[] = 'bdp-popup-main-body';
-        if( ! empty($this->options['topbar_position']) ){
+        if( ! empty($this->options['topbar_position']) && $this->options['topbar_position'] == 'bottom' ){
             $classes[] = 'bdp-popup-bottom';
         }else{
             $classes[] = 'bdp-popup-top';
