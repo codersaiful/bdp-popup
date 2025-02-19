@@ -1,3 +1,4 @@
+
 <table class="wcmmq-table universal-setting">
     <thead>
         <tr>
@@ -24,12 +25,16 @@
                     <div class="form-field col-lg-6">
 
                         <?php
-                        $visibility_all = $save_data['visibility_all'] ?? 'off';
-                        $selected_value = !empty($visibility_all) && $visibility_all == 'on' ? 'on' : 'off';
+                        
+                        $visibility_all = $save_data['visibility_all'] ?? '';
+                        $selected_value = $visibility_all;// !empty($visibility_all) && $visibility_all == 'on' ? 'on' : 'off';
                         ?>
                         <select name="data[visibility_all]" id="data[visibility_all]" class="ua_input_select">
                             <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('ON', 'wcmmq'); ?></option>
                             <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('OFF', 'wcmmq'); ?></option>
+                            <?php if( $api_site_bool ): ?>
+                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
+                            <?php endif; ?>
                         </select>
                     </div>
                 </div>
@@ -103,12 +108,15 @@
                     <div class="form-field col-lg-6">
 
                     <?php
-                        $popup_as_header = $save_data['popup_as_header'] ?? 'off';
-                        $selected_value = !empty($popup_as_header) && $popup_as_header == 'on' ? 'on' : 'off';
+                        $popup_as_header = $save_data['popup_as_header'] ?? '';
+                        $selected_value = $popup_as_header;// !empty($popup_as_header) && $popup_as_header == 'on' ? 'on' : 'off';
                         ?>
                         <select name="data[popup_as_header]" id="data[popup_as_header]" class="ua_input_select">
                             <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('ON', 'wcmmq'); ?></option>
                             <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('OFF', 'wcmmq'); ?></option>
+                            <?php if( $api_site_bool ): ?>
+                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
+                            <?php endif; ?>
                         </select>
 
                     </div>
@@ -152,12 +160,15 @@
                     <div class="form-field col-lg-6">
 
                     <?php
-                        $topbar_position = $save_data['topbar_position'] ?? 'top';
-                        $selected_value = !empty($topbar_position) && $topbar_position == 'top' ? 'top' : 'bottom';
+                        $topbar_position = $save_data['topbar_position'] ?? '';
+                        $selected_value = $topbar_position;// !empty($topbar_position) && $topbar_position == 'top' ? 'top' : 'bottom';
                         ?>
                         <select name="data[topbar_position]" id="data[topbar_position]" class="ua_input_select">
                             <option value="top" <?php selected($selected_value, 'top'); ?>><?php echo esc_html__('Top', 'wcmmq'); ?></option>
                             <option value="bottom" <?php selected($selected_value, 'bottom'); ?>><?php echo esc_html__('Bottom', 'wcmmq'); ?></option>
+                            <?php if( $api_site_bool ): ?>
+                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
+                            <?php endif; ?>
                         </select>                        
                         
                     </div>

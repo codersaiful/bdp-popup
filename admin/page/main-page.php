@@ -1,5 +1,8 @@
 <?php
 $save_data = $this->options;
+$api_site_bool = ! empty($save_data['api_site_url']) && filter_var($save_data['api_site_url'], FILTER_VALIDATE_URL) && ! empty($save_data['api_access_token']) ;
+$api_bool_class = $api_site_bool ? 'api-site-bool' : 'no-api-site-bool';
+$api_area_class = $api_site_bool ? 'api-area-api-enabled' : 'api-area-api-disabled';
 ?>
 <div class="wrap wcmmq_wrap wcmmq-content">
 
@@ -26,19 +29,19 @@ $save_data = $this->options;
                 </button>
             </div>
             <?php wp_nonce_field( $this->plugin_prefix, $this->plugin_prefix ); ?>
-            <div class="wcmmq-section-panel api-data" id="wcmmq-api-data">
+            <div class="wcmmq-section-panel api-data <?php echo $api_area_class; ?>" id="wcmmq-api-data">
                 <?php include 'api-data.php'; ?>
             </div>
-            <div class="wcmmq-section-panel content-settings" id="wcmmq-content-settings">
+            <div class="wcmmq-section-panel content-settings <?php echo $api_bool_class; ?>" id="wcmmq-content-settings">
                 <?php include 'content-settings.php'; ?>
             </div>
-            <div class="wcmmq-section-panel universal-settings" id="wcmmq-universal-settings">
+            <div class="wcmmq-section-panel universal-settings <?php echo $api_bool_class; ?>" id="wcmmq-universal-settings">
                 <?php include 'universal-settings.php'; ?>
             </div>
-            <div class="wcmmq-section-panel style-settings" id="wcmmq-style-settings">
+            <div class="wcmmq-section-panel style-settings <?php echo $api_bool_class; ?>" id="wcmmq-style-settings">
                 <?php include 'style-settings.php'; ?>
             </div>
-            <div class="wcmmq-section-panel coupon-toggle" id="coupon-toggle-settings">
+            <div class="wcmmq-section-panel coupon-toggle <?php echo $api_bool_class; ?>" id="coupon-toggle-settings">
                 <?php include 'coupon-button.php'; ?>
             </div>
 

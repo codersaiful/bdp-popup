@@ -48,12 +48,15 @@
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $coupon_visibility = $save_data['coupon_visibility'] ?? 'off';
-                        $selected_value = !empty($coupon_visibility) && $coupon_visibility == 'on' ? 'on' : 'off';
+                        $coupon_visibility = $save_data['coupon_visibility'] ?? '';
+                        $selected_value = $coupon_visibility;// !empty($coupon_visibility) && $coupon_visibility == 'on' ? 'on' : 'off';
                         ?>
                         <select name="data[coupon_visibility]" id="data[coupon_visibility]" class="ua_input_select">
                             <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('Show', 'wcmmq'); ?></option>
                             <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('Hide', 'wcmmq'); ?></option>
+                            <?php if( $api_site_bool ): ?>
+                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
+                            <?php endif; ?>
                         </select>
                     </div>
                 </div>

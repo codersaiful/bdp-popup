@@ -1,7 +1,29 @@
-/* *,* *, * * *{
-    color: white !important;
-    background-color: black !important;
-} */
+.wcmmq-section-panel.api-site-bool {
+    background: #ffdfd4;
+    opacity: 0.8;
+}
+.wcmmq-section-panel.api-site-bool .wcmmq-table > thead > tr > th:last-child,.wcmmq-section-panel.api-site-bool .wcmmq-table > tbody > tr > td:last-child{
+    background: #ffc9b7;
+}
+
+.wcmmq-content .wcmmq-section-panel.api-site-bool .ua_input_number, .wcmmq-content .wcmmq-section-panel.api-site-bool .ua_input_select{
+    background-color: #ffffff6e;
+    color: #bdbdbd;
+}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled {
+    border: 1px solid #030600;
+    box-shadow: 1px 1px 14px 0 rgb(34 22 3 / 49%);
+    padding: 12px;
+}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled thead h3, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td label{color: #009506;}
+
+
+
+/* Old css Admin css start here */
 body.bdp_pop-zero-body #wpcontent {
     padding-left: 0;
 }
