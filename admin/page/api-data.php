@@ -97,6 +97,7 @@
                         <?php
                         $api = \BDP_Popup\Frontend\API::init();
                         $remote_options = $api->get_remote();
+
                         if(empty($remote_options)){
                             echo '<p style="color:red">Connection Error</p>';
                             echo '<p style="color:gray">[Target Site] error, Check your target site url.</p>';
@@ -107,7 +108,11 @@
                                 echo '<p style="color:red">Connection Error</p>';
                                 echo '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
                             }else{
-                                echo '<span style="color:orange">Unknown Error</span>';
+                                echo '<p style="color:orange">Unknown Error</p>';
+                                if( ! empty( $remote_options['message'] ) ){
+                                    echo '<code style="color:gray">' . $remote_options['message'] . '</code>';
+                                }
+                                
                             }
                         }
                         delete_transient( $this->token_key );
