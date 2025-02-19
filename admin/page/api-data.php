@@ -12,27 +12,27 @@
         $connection_class = 'connection_problem';
         $connection_status_show = true;
         $api = \BDP_Popup\Frontend\API::init();
-                        $remote_options = $api->get_remote();
-
-                        if(empty($remote_options)){
-                            $connection_status_output .= '<p style="color:red">Connection Error</p>';
-                            $connection_status_output .= '<p style="color:gray">[Target Site] error, Check your target site url.</p>';
-                        }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
-                            if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
-                                $connection_class = 'connection_success';
-                                $connection_status_output .= '<span style="color:green">Connection Success</span>';
-                            }else if( ! empty( $remote_options['status_message'] ) ){ 
-                                $connection_status_output .= '<p style="color:red">Connection Error</p>';
-                                $connection_status_output .= '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
-                            }else{
-                                $connection_status_output .= '<p style="color:orange">Unknown Error</p>';
-                                if( ! empty( $remote_options['message'] ) ){
-                                    $connection_status_output .= '<code style="color:gray">' . $remote_options['message'] . '</code>';
-                                }
-                                
-                            }
-                        }
-                        delete_transient( $this->token_key );
+        $remote_options = $api->get_remote();
+        dd($remote_options);
+        if(empty($remote_options)){
+            $connection_status_output .= '<p style="color:red">Connection Error</p>';
+            $connection_status_output .= '<p style="color:gray">[Target Site] error, Check your target site url.</p>';
+        }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
+            if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
+                $connection_class = 'connection_success';
+                $connection_status_output .= '<span style="color:green">Connection Success</span>';
+            }else if( ! empty( $remote_options['status_message'] ) ){ 
+                $connection_status_output .= '<p style="color:red">Connection Error</p>';
+                $connection_status_output .= '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
+            }else{
+                $connection_status_output .= '<p style="color:orange">Unknown Error</p>';
+                if( ! empty( $remote_options['message'] ) ){
+                    $connection_status_output .= '<code style="color:gray">' . $remote_options['message'] . '</code>';
+                }
+                
+            }
+        }
+        delete_transient( $this->token_key );
     }
     
 ?>
