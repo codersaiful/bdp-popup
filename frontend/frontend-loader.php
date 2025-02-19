@@ -135,11 +135,13 @@ class Frontend_Loader extends Base
         if( ! empty( $remote_options ) && $remote_options['status'] === true ){
             set_transient( $this->token_key, $remote_options, 8000);
             $this->options = array_merge( $this->options, $remote_options );
+            return;
         }
 
         $this->backup_options = get_option( $this->backup_option_key, [] );
         if( ! empty( $this->backup_options ) && $this->backup_options['status'] === true ){
             $this->options = array_merge( $this->options, $this->backup_options );
+            return;
         }
         
     }
