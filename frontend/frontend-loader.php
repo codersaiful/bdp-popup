@@ -23,7 +23,8 @@ class Frontend_Loader extends Base
     public $cookie_expire_time;
     public $is_already_cookie;
     public $is_popup;
-    public $options;
+    public $options = [];
+    public $backup_options = [];
 
     public $current_page_id;
 
@@ -51,7 +52,7 @@ class Frontend_Loader extends Base
          * It's need at the begginng of this contructor. Because, we have to change everything based on value.
          */
         // $this->set_options();
-        $this->options = get_option( $this->option_key );
+        $this->options = get_option( $this->option_key, [] );
 
         /**
          * To set options based on api
@@ -122,16 +123,23 @@ class Frontend_Loader extends Base
     }
     protected function modify_options_based_on_api(){
         $remote_data_transient = get_transient( $this->token_key );
+
         if( ! empty( $remote_data_transient ) && $remote_data_transient['status'] === true ){
             $this->options = array_merge( $remote_data_transient, array_filter( $this->options ) );
             return;
         }
+
         $api = API::init();
         $this->token_key = $api->token_key;
         $remote_options = $api->get_remote();
         if( ! empty( $remote_options ) && $remote_options['status'] === true ){
-            set_transient( $this->token_key, $remote_options, 4000);
+            set_transient( $this->token_key, $remote_options, 8000);
             $this->options = array_merge( $this->options, $remote_options );
+        }
+
+        $this->backup_options = get_option( $this->backup_option_key, [] );
+        if( ! empty( $this->backup_options ) && $this->backup_options['status'] === true ){
+            $this->options = array_merge( $this->options, $this->backup_options );
         }
         
     }

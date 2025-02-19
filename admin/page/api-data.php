@@ -19,6 +19,9 @@
             $connection_status_output .= '<p style="color:gray">[Target Site] error, Check your target site url.</p>';
         }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
             if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
+
+                //We will keep at backup on options, because, transition will delete after 8000 seconds
+                update_option( $this->backup_option_key, $remote_options );
                 $connection_class = 'connection_success';
                 $connection_status_output .= '<span style="color:green">Connection Success</span>';
             }else if( ! empty( $remote_options['status_message'] ) ){ 

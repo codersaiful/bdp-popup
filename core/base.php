@@ -9,6 +9,7 @@ class Base{
     public $base_dir = BDP_POP_BASE_DIR;
     public $assets_url = BDP_POP_ASSETS_URL;
     public $option_key = 'bdp_pop_options';
+    public $backup_option_key = 'bdp_pop_options_backup';
 
 
     public $token_key = 'bdp_popup_token';

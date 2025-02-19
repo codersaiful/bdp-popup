@@ -7,7 +7,7 @@
  * Author URI: https://wooproducttable.com/?utm_source=BDP-Dashboard&utm_medium=Free+Version
  * Tags: popup, modal, popup-header
  * 
- * Version: 1.0.5
+ * Version: 1.0.5.1
  * Requires at least:    4.0.0
  * Tested up to:         6.3
  * 
@@ -17,7 +17,7 @@
  */
 
 if( ! defined( 'BDP_POP_DEV_VERSION' ) ){
-    define( "BDP_POP_DEV_VERSION", '1.0.5.0' );
+    define( "BDP_POP_DEV_VERSION", '1.0.5.155' );
 }
 if( ! defined( 'BDP_POP_BASE_URL' ) ){
     define( "BDP_POP_BASE_URL", plugins_url() . '/'. plugin_basename( dirname( __FILE__ ) ) . '/' );
