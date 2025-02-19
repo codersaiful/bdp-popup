@@ -60,7 +60,9 @@ class Frontend_Loader extends Base
          * @since 1.0.0.11
          */
         $this->api_site_url = $this->options['api_site_url'] ?? null;
-        if( ! empty( $this->api_site_url ) && filter_var($this->api_site_url, FILTER_VALIDATE_URL) ) {
+        $this->api_access_token = $this->options['api_access_token'] ?? null;
+            
+        if( ! empty( $this->api_site_url ) && filter_var($this->api_site_url, FILTER_VALIDATE_URL) && ! empty( $this->api_access_token ) ) {
             $this->modify_options_based_on_api();
         }
 
@@ -120,14 +122,14 @@ class Frontend_Loader extends Base
     }
     protected function modify_options_based_on_api(){
         $remote_data_transient = get_transient( $this->token_key );
-        if( ! empty( $remote_data_transient ) ){
+        if( ! empty( $remote_data_transient ) && $remote_data_transient['status'] === true ){
             $this->options = array_merge( $remote_data_transient, array_filter( $this->options ) );
             return;
         }
         $api = API::init();
         $this->token_key = $api->token_key;
         $remote_options = $api->get_remote();
-        if( ! empty( $remote_options ) ){
+        if( ! empty( $remote_options ) && $remote_options['status'] === true ){
             set_transient( $this->token_key, $remote_options, 4000);
             $this->options = array_merge( $this->options, $remote_options );
         }

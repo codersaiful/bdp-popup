@@ -69,6 +69,7 @@ class API extends Base
             'headers' => array(
                 'Content-Type' => 'application/x-www-form-urlencoded', // You can change this if needed
             ),
+            'sslverify' => false, // Disable SSL verification (optional)
         );
         $response = wp_remote_post( $this->api_url, $args );
         // return [$this->api_url];
