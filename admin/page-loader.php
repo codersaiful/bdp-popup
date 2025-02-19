@@ -70,9 +70,38 @@ class Page_Loader extends Base
         add_action( 'admin_menu', [$this, 'admin_menu'] );
         add_filter('admin_body_class', [$this, 'body_class']);
         add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_scripts'] );
+        add_action( 'wp_ajax_bdp_import_settings', [$this, 'handle_import_settings'] );
     }
 
-    
+    /**
+     * Handle AJAX import of settings
+     */
+    public function handle_import_settings() {
+        // Check nonce
+        if (!check_ajax_referer($this->plugin_prefix, 'nonce', false)) {
+            wp_send_json_error(['message' => 'Invalid security token']);
+        }
+
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(['message' => 'Permission denied']);
+        }
+
+        // Get and validate settings
+        $settings = isset($_POST['settings']) ? $_POST['settings'] : null;
+        if (!is_array($settings)) {
+            wp_send_json_error(['message' => 'Invalid settings data']);
+        }
+
+        // Update options
+        update_option($this->option_key, $settings);
+        
+        // Clear any transients
+        delete_transient($this->token_key);
+
+        wp_send_json_success(['message' => 'Settings imported successfully']);
+    }
+
     public function main_page_html()
     {
         
@@ -146,10 +175,14 @@ class Page_Loader extends Base
 
             
             $ajax_url = admin_url( 'admin-ajax.php' );
+            $current_settings = $this->options;
+            unset($current_settings['api_access_key']);
             $WCMMQ_ADMIN_DATA = array( 
                 'ajax_url'       => $ajax_url,
                 'site_url'       => site_url(),
-                );
+                'nonce'          => wp_create_nonce($this->plugin_prefix),
+                'current_settings' => $current_settings,
+            );
             wp_localize_script( $js_handle, 'WCMMQ_ADMIN_DATA', $WCMMQ_ADMIN_DATA );
             
 

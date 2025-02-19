@@ -45,6 +45,10 @@ $api_area_class = $api_site_bool ? 'api-area-api-enabled' : 'api-area-api-disabl
                 <?php include 'coupon-button.php'; ?>
             </div>
 
+            <div class="wcmmq-section-panel export-import <?php echo $api_bool_class; ?>" id="export-import-settings">
+                <?php include 'export-import.php'; ?>
+            </div>
+
             <div class="wcmmq-section-panel no-background wcmmq-full-form-submit-wrapper">
                 
                 <button name="configure_submit" type="submit"

@@ -1,6 +1,61 @@
 jQuery(function($) {
     'use strict';
     $(document).ready(function() {
+        // Export/Import Functionality
+        $('#bdp-export-settings').on('click', function() {
+            var settings = WCMMQ_ADMIN_DATA.current_settings || {};
+            var dataStr = JSON.stringify(settings, null, 2);
+            var date = new Date().toISOString().slice(0,10);
+            
+            // Create and trigger download
+            var blob = new Blob([dataStr], { type: 'application/json' });
+            var url = window.URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'bdp-popup-settings-' + date + '.json';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            a.remove();
+        });
+
+        $('#bdp-import-settings').on('click', function() {
+            var importData = $('#bdp-import-data').val().trim();
+            if (!importData) {
+                alert('Please paste settings data to import');
+                return;
+            }
+
+            try {
+                var settings = JSON.parse(importData);
+                
+                // Send AJAX request to import settings
+                $.ajax({
+                    url: WCMMQ_ADMIN_DATA.ajax_url,
+                    type: 'POST',
+                    data: {
+                        action: 'bdp_import_settings',
+                        settings: settings,
+                        nonce: WCMMQ_ADMIN_DATA.nonce
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Settings imported successfully. Page will reload to apply changes.');
+                            location.reload();
+                        } else {
+                            alert('Import failed: ' + (response.data.message || 'Unknown error'));
+                        }
+                    },
+                    error: function() {
+                        alert('Import failed. Please try again.');
+                    }
+                });
+            } catch (e) {
+                alert('Invalid JSON data. Please check the imported settings.');
+            }
+        });
+
         // Media Uploader
         var mediaUploader;
 
