@@ -5,9 +5,9 @@ jQuery(function($) {
         var mediaUploader;
 
         $('#wcmmq-show-api-area-btn').on('click', function(e) {
-            e.preventDefault();
-            $(this).hide();
-            $(this).closest('.wcmmq-section-panel').find('table.api-setting-table.table-hide').fadeIn();
+            e.preventDefault(); 
+            $(this).toggleClass('wcmmq-show-api-area-btn-clicked');
+            $(this).closest('.wcmmq-section-panel').find('table.api-setting-table.table-hide').fadeToggle();
         });
         
         $('#wcmmq-show-customize-area-btn').on('click', function(e) {
