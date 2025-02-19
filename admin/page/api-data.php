@@ -3,10 +3,40 @@
     if( empty( $my_access_key ) ){
         $my_access_key = pdp_generate_access_key(18); 
     }
+    $api_site_url = $save_data['api_site_url'] ?? '';
+    $api_access_token = $save_data['api_access_token'] ?? '';
+
+    $connection_status_show = $connection_status_output = false;
     
+    if( ! empty( $api_site_url ) && ! empty( $api_access_token ) ){
+        $connection_class = 'connection_problem';
+        $connection_status_show = true;
+        $api = \BDP_Popup\Frontend\API::init();
+                        $remote_options = $api->get_remote();
+
+                        if(empty($remote_options)){
+                            $connection_status_output .= '<p style="color:red">Connection Error</p>';
+                            $connection_status_output .= '<p style="color:gray">[Target Site] error, Check your target site url.</p>';
+                        }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
+                            if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
+                                $connection_class = 'connection_success';
+                                $connection_status_output .= '<span style="color:green">Connection Success</span>';
+                            }else if( ! empty( $remote_options['status_message'] ) ){ 
+                                $connection_status_output .= '<p style="color:red">Connection Error</p>';
+                                $connection_status_output .= '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
+                            }else{
+                                $connection_status_output .= '<p style="color:orange">Unknown Error</p>';
+                                if( ! empty( $remote_options['message'] ) ){
+                                    $connection_status_output .= '<code style="color:gray">' . $remote_options['message'] . '</code>';
+                                }
+                                
+                            }
+                        }
+                        delete_transient( $this->token_key );
+    }
     
 ?>
-<table class="wcmmq-table universal-setting">
+<table class="wcmmq-table api-setting-table table-<?php echo esc_attr($connection_class); ?>">
     <thead>
         <tr>
             <th class="wcmmq-inside">
@@ -44,7 +74,7 @@
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $api_site_url = $save_data['api_site_url'] ?? '';
+                        
                         if (! empty( $api_site_url ) && ! filter_var($api_site_url, FILTER_VALIDATE_URL)) {
                             $api_site_url = '';
                         }
@@ -69,10 +99,7 @@
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $api_access_token = $save_data['api_access_token'] ?? '';
-                        // if (! empty( $api_access_token ) ) {
-                        //     $api_access_token = '';
-                        // }
+                        
                         ?>
                         <input name="data[api_access_token]" id="data[api_access_token]" class="ua_input_number" 
                         value="<?php echo esc_attr($api_access_token); ?>"  type="text">
@@ -86,7 +113,7 @@
                 </div> 
             </td>
         </tr> 
-        <?php if( ! empty( $api_site_url ) && ! empty( $api_access_token ) ){ ?>
+        <?php if( $connection_status_show ){ ?>
         <tr>
             <td>
                 <div class="wcmmq-form-control">
@@ -95,27 +122,7 @@
                     </div>
                     <div class="form-field col-lg-6">
                         <?php
-                        $api = \BDP_Popup\Frontend\API::init();
-                        $remote_options = $api->get_remote();
-
-                        if(empty($remote_options)){
-                            echo '<p style="color:red">Connection Error</p>';
-                            echo '<p style="color:gray">[Target Site] error, Check your target site url.</p>';
-                        }else if(  ! empty( $remote_options ) && is_array( $remote_options )){
-                            if( isset( $remote_options['status'] ) && $remote_options['status'] == true ){
-                                echo '<span style="color:green">Connection Success</span>';
-                            }else if( ! empty( $remote_options['status_message'] ) ){ 
-                                echo '<p style="color:red">Connection Error</p>';
-                                echo '<span style="color:orange">' . $remote_options['status_message'] . '</span>';
-                            }else{
-                                echo '<p style="color:orange">Unknown Error</p>';
-                                if( ! empty( $remote_options['message'] ) ){
-                                    echo '<code style="color:gray">' . $remote_options['message'] . '</code>';
-                                }
-                                
-                            }
-                        }
-                        delete_transient( $this->token_key );
+                        echo wp_kses_post($connection_status_output);
 
                         ?>
                         

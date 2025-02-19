@@ -21,6 +21,23 @@ div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td,
 div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled thead h3, 
 div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td label{color: #009506;}
 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem td, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem thead h3, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem td label{color: #d40024;}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem td,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem th,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem thead,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem tbody,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem {
+    
+    background: #ffe3e3;
+}
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem {
+    border: 1px solid #ff000045;
+}
+
+
 
 
 /* Old css Admin css start here */
