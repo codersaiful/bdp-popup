@@ -7,7 +7,7 @@
     $api_access_token = $save_data['api_access_token'] ?? '';
 
     $connection_status_show = $connection_status_output = false;
-    
+    $connection_class = 'hide';
     if( ! empty( $api_site_url ) && ! empty( $api_access_token ) ){
         $connection_class = 'connection_problem';
         $connection_status_show = true;
@@ -36,6 +36,11 @@
     }
     
 ?>
+
+<button type="submit" class="wcmmq-btn wcmmq-btn-tiny reset wcmmq-has-icon wcmmq-show-api-area" id="wcmmq-show-api-area-btn">
+    <span><i class="wcmmq_icon-plug"></i></span>
+    <strong class="form-submit-text">SHOW API AREA</strong>
+</button>
 <table class="wcmmq-table api-setting-table table-<?php echo esc_attr($connection_class); ?>">
     <thead>
         <tr>

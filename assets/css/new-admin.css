@@ -16,6 +16,11 @@ div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled {
     box-shadow: 1px 1px 14px 0 rgb(34 22 3 / 49%);
     padding: 12px;
 }
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled button.wcmmq-btn.wcmmq-show-api-area{display: none;}
+button.wcmmq-btn.wcmmq-show-api-area {
+    margin: 20px;
+}
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-disabled table.wcmmq-table.api-setting-table.table-hide{display: none;}
 
 div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td, 
 div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled thead h3, 

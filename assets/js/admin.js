@@ -3,10 +3,15 @@ jQuery(function($) {
     $(document).ready(function() {
         // Media Uploader
         var mediaUploader;
-        console.log(mediaUploader);
+
+        $('#wcmmq-show-api-area-btn').on('click', function(e) {
+            e.preventDefault();
+            $(this).hide();
+            $(this).closest('.wcmmq-section-panel').find('table.api-setting-table.table-hide').fadeIn();
+        });
+
         $('#upload_popup_image_button').on('click', function(e) {
             e.preventDefault();
-            console.log(mediaUploader);
             // If the uploader object has already been created, reopen the dialog
             if (mediaUploader) {
                 mediaUploader.open();
