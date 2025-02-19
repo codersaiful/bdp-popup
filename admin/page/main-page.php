@@ -69,7 +69,7 @@ $api_area_class = $api_site_bool ? 'api-area-api-enabled' : 'api-area-api-disabl
         </form>
     </div>
 </div> 
-<div class="style-preview-section">
+<div class="style-preview-section <?php echo esc_attr($api_bool_class); ?>">
                     <h4><?php echo esc_html__('Live Preview', 'bdp-popup'); ?></h4>
                     <div class="preview-popup">
                         <div id="bdp-popup-wrapper" class="bdp-popup-wrapper preview-popup-wrapper" style="position: relative; height: 300px; background: #fff;">

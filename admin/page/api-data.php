@@ -13,7 +13,7 @@
         $connection_status_show = true;
         $api = \BDP_Popup\Frontend\API::init();
         $remote_options = $api->get_remote();
-        dd($remote_options);
+
         if(empty($remote_options)){
             $connection_status_output .= '<p style="color:red">Connection Error</p>';
             $connection_status_output .= '<p style="color:gray">[Target Site] error, Check your target site url.</p>';

@@ -1,0 +1,50 @@
+.wcmmq-section-panel.api-site-enabled {
+    background: #ffdfd4;
+    opacity: 0.8;
+    display: none;
+}
+.table-connection_success code.this-site-access-key {
+    display: none;
+}
+.wcmmq-section-panel.api-site-enabled .wcmmq-table > thead > tr > th:last-child,.wcmmq-section-panel.api-site-enabled .wcmmq-table > tbody > tr > td:last-child{
+    background: #ffc9b7;
+}
+.style-preview-section.api-site-enabled {
+    display: none;
+}
+
+.wcmmq-content .wcmmq-section-panel.api-site-enabled .ua_input_number, .wcmmq-content .wcmmq-section-panel.api-site-enabled .ua_input_select{
+    background-color: #ffffff6e;
+    color: #bdbdbd;
+}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled.customized-btn-clicked {
+    border: 1px solid #030600;
+    box-shadow: 1px 1px 14px 0 rgb(34 22 3 / 49%);
+    padding: 12px;
+}
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled button.wcmmq-btn.wcmmq-show-api-area{display: none;}
+button.wcmmq-btn.wcmmq-show-customize-area,button.wcmmq-btn.wcmmq-show-api-area {
+    margin: 20px;
+}
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-disabled table.wcmmq-table.api-setting-table.table-hide{display: none;}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled thead h3, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled td label{color: #009506;}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem td, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem thead h3, 
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem td label{color: #d40024;}
+
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem td,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem th,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem thead,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem tbody,
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem {
+    
+    background: #ffe3e3;
+}
+div#wcmmq-api-data.wcmmq-section-panel.api-data.api-area-api-enabled table.wcmmq-table.api-setting-table.table-connection_problem {
+    border: 1px solid #ff000045;
+}
