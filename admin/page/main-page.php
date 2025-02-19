@@ -1,7 +1,7 @@
 <?php
 $save_data = $this->options;
 $api_site_bool = ! empty($save_data['api_site_url']) && filter_var($save_data['api_site_url'], FILTER_VALIDATE_URL) && ! empty($save_data['api_access_token']) ;
-$api_bool_class = $api_site_bool ? 'api-site-bool' : 'no-api-site-bool';
+$api_bool_class = $api_site_bool ? 'api-site-enabled' : 'no-api-site-enabled';
 $api_area_class = $api_site_bool ? 'api-area-api-enabled' : 'api-area-api-disabled';
 ?>
 <div class="wrap wcmmq_wrap wcmmq-content">

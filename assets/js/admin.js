@@ -9,6 +9,14 @@ jQuery(function($) {
             $(this).hide();
             $(this).closest('.wcmmq-section-panel').find('table.api-setting-table.table-hide').fadeIn();
         });
+        
+        $('#wcmmq-show-customize-area-btn').on('click', function(e) {
+            e.preventDefault();
+            $(this).hide();
+            $(this).closest('.wcmmq-section-panel').find('table.api-setting-table.table-hide').addClass('customized-btn-clicked');
+            $('.wcmmq-section-panel.api-site-enabled').fadeIn();
+        });
+
 
         $('#upload_popup_image_button').on('click', function(e) {
             e.preventDefault();

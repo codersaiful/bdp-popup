@@ -46,7 +46,7 @@
         <tr>
             <th class="wcmmq-inside">
                 <div class="wcmmq-table-header-inside">
-                    <h3><?php echo esc_html__( 'API Area', 'wcmmq' ); ?> <code title="Access Key"><?php echo esc_attr($my_access_key) ?></code></h3>
+                    <h3><?php echo esc_html__( 'API Area', 'wcmmq' ); ?> <code class="this-site-access-key" title="Access Key"><?php echo esc_attr($my_access_key) ?></code></h3>
                     
                 </div>
                 
@@ -144,3 +144,9 @@
         <?php } ?>
     </tbody>
 </table>
+<?php if($connection_class === 'connection_success'){ ?>
+    <button class="wcmmq-btn wcmmq-btn-tiny reset wcmmq-has-icon wcmmq-show-customize-area" id="wcmmq-show-customize-area-btn">
+        <span><i class="wcmmq_icon-plug"></i></span>
+        <strong class="form-submit-text">Customized Settings</strong>
+    </button>
+<?php } ?>
