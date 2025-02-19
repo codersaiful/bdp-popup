@@ -111,7 +111,7 @@ class API extends Base
         $params = $request->get_params();
         $requested_access_key = $params['access_key'] ?? null;
         $this_access_key = $this->options['api_access_key'] ?? null;
-        update_option('saiful_test_data', [$params, $this_access_key, $requested_access_key]);
+
         if( ! empty( $this_access_key ) && ! empty( $this_access_key ) &&  $requested_access_key === $this_access_key ) {
             // Return a success response.
             $this->options['status'] = true;
