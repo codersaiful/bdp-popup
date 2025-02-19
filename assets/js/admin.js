@@ -20,40 +20,67 @@ jQuery(function($) {
             a.remove();
         });
 
+        // Trigger file input when browse button is clicked
+        $('#bdp-browse-file').on('click', function() {
+            $('#bdp-import-file').click();
+        });
+
+        // Handle file selection
+        $('#bdp-import-file').on('change', function(e) {
+            var file = e.target.files[0];
+            if (file) {
+                $('#selected-file-name').text(file.name);
+                $('#bdp-import-settings').show();
+            } else {
+                $('#selected-file-name').text('');
+                $('#bdp-import-settings').hide();
+            }
+        });
+
         $('#bdp-import-settings').on('click', function() {
-            var importData = $('#bdp-import-data').val().trim();
-            if (!importData) {
-                alert('Please paste settings data to import');
+            var fileInput = $('#bdp-import-file')[0];
+            if (!fileInput.files.length) {
+                alert('Please select a file to import');
                 return;
             }
 
-            try {
-                var settings = JSON.parse(importData);
-                
-                // Send AJAX request to import settings
-                $.ajax({
-                    url: WCMMQ_ADMIN_DATA.ajax_url,
-                    type: 'POST',
-                    data: {
-                        action: 'bdp_import_settings',
-                        settings: settings,
-                        nonce: WCMMQ_ADMIN_DATA.nonce
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            alert('Settings imported successfully. Page will reload to apply changes.');
-                            location.reload();
-                        } else {
-                            alert('Import failed: ' + (response.data.message || 'Unknown error'));
-                        }
-                    },
-                    error: function() {
-                        alert('Import failed. Please try again.');
-                    }
-                });
-            } catch (e) {
-                alert('Invalid JSON data. Please check the imported settings.');
+            var file = fileInput.files[0];
+            if (file.type !== 'application/json' && !file.name.endsWith('.json')) {
+                alert('Please select a valid JSON file');
+                return;
             }
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    var settings = JSON.parse(e.target.result);
+                    
+                    // Send AJAX request to import settings
+                    $.ajax({
+                        url: WCMMQ_ADMIN_DATA.ajax_url,
+                        type: 'POST',
+                        data: {
+                            action: 'bdp_import_settings',
+                            settings: settings,
+                            nonce: WCMMQ_ADMIN_DATA.nonce
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                alert('Settings imported successfully. Page will reload to apply changes.');
+                                location.reload();
+                            } else {
+                                alert('Import failed: ' + (response.data.message || 'Unknown error'));
+                            }
+                        },
+                        error: function() {
+                            alert('Import failed. Please try again.');
+                        }
+                    });
+                } catch (e) {
+                    alert('Invalid JSON file. Please check the file contents.');
+                }
+            };
+            reader.readAsText(file);
         });
 
         // Media Uploader

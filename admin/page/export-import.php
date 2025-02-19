@@ -47,15 +47,19 @@ $save_data = $this->options;
             <td>
                 <div class="wcmmq-form-control">
                     <div class="form-label col-lg-6">
-                        <label for="bdp-import-data"><?php echo esc_html__('Import Settings', 'bdp-popup'); ?></label>
+                        <label><?php echo esc_html__('Import Settings', 'bdp-popup'); ?></label>
                     </div>
                     <div class="form-field col-lg-6">
-                        <textarea id="bdp-import-data" rows="8" class="large-text" placeholder="<?php echo esc_attr__('Paste your JSON settings here...', 'bdp-popup'); ?>"></textarea>
-                        <button type="button" id="bdp-import-settings" class="button button-primary" style="margin-top: 10px;">
+                        <input type="file" id="bdp-import-file" accept=".json" style="display: none;" />
+                        <button type="button" id="bdp-browse-file" class="button button-secondary">
+                            <?php echo esc_html__('Choose File', 'bdp-popup'); ?>
+                        </button>
+                        <span id="selected-file-name" style="margin-left: 10px; font-style: italic;"></span>
+                        <button type="button" id="bdp-import-settings" class="button button-primary" style="margin-top: 10px; display: none;">
                             <?php echo esc_html__('Import', 'bdp-popup'); ?>
                         </button>
                         <p class="description">
-                            <?php echo esc_html__('Paste your exported JSON settings and click Import', 'bdp-popup'); ?>
+                            <?php echo esc_html__('Select a JSON file to import settings', 'bdp-popup'); ?>
                         </p>
                     </div>
                 </div>
@@ -70,11 +74,10 @@ $save_data = $this->options;
 </table>
 
 <style>
-#bdp-import-data {
-    width: 100%;
-    margin-top: 10px;
-    font-family: monospace;
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+#bdp-browse-file {
+    margin-right: 10px;
+}
+#selected-file-name {
+    color: #666;
 }
 </style> 
