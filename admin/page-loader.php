@@ -56,10 +56,9 @@ class Page_Loader extends Base
             setcookie($cookie_name, $this->plugin_prefix, 100);
             update_option($this->option_key,$this->submitted_data);
 
-            //Transient set empty/ again
-            // set_transient( $this->token_key, '', 2);
-            delete_transient( $this->token_key );
         }
+        //Transient set empty/ again
+        delete_transient( $this->token_key );
         
     }
     public function get_options()
