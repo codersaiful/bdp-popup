@@ -5,29 +5,29 @@ $api_base_url = rest_url('bdp-popup/v1');
 ?>
 
 <div class="wrap bdp-api-settings-wrap">
-    <h1><?php echo esc_html__('API Documentation', 'bdp_pop'); ?></h1>
-    <p class="description"><?php echo esc_html__('Learn how to integrate with the BDP Popup API to manage your popup settings programmatically.', 'bdp_pop'); ?></p>
+    <h1><?php echo esc_html__('API Documentation', 'bdp-popup'); ?></h1>
+    <p class="description"><?php echo esc_html__('Learn how to integrate with the BDP Popup API to manage your popup settings programmatically.', 'bdp-popup'); ?></p>
     
     <!-- Quick Start Guide -->
     <div class="postbox">
         <div class="postbox-header">
-            <h2><?php echo esc_html__('Quick Start Guide', 'bdp_pop'); ?></h2>
+            <h2><?php echo esc_html__('Quick Start Guide', 'bdp-popup'); ?></h2>
         </div>
         <div class="inside">
             <div class="bdp-info-box">
-                <p><strong><?php echo esc_html__('Note:', 'bdp_pop'); ?></strong> <?php echo esc_html__('For detailed Bengali documentation, please check the doc folder in the plugin directory.', 'bdp_pop'); ?></p>
+                <p><strong><?php echo esc_html__('Note:', 'bdp-popup'); ?></strong> <?php echo esc_html__('For detailed Bengali documentation, please check the doc folder in the plugin directory.', 'bdp-popup'); ?></p>
             </div>
 
-            <h3><?php echo esc_html__('Authentication', 'bdp_pop'); ?></h3>
-            <p><?php echo esc_html__('All API requests require authentication using your API key. You can include the key in two ways:', 'bdp_pop'); ?></p>
+            <h3><?php echo esc_html__('Authentication', 'bdp-popup'); ?></h3>
+            <p><?php echo esc_html__('All API requests require authentication using your API key. You can include the key in two ways:', 'bdp-popup'); ?></p>
             
-            <h4><?php echo esc_html__('Option 1: Header Authentication (Recommended)', 'bdp_pop'); ?></h4>
+            <h4><?php echo esc_html__('Option 1: Header Authentication (Recommended)', 'bdp-popup'); ?></h4>
             <div class="bdp-code-block">
                 <code>curl -X GET "<?php echo esc_html($api_base_url); ?>/settings" \
   -H "X-API-Key: <?php echo esc_html($api_key ? $api_key : 'YOUR_API_KEY_HERE'); ?>"</code>
             </div>
 
-            <h4><?php echo esc_html__('Option 2: Query Parameter', 'bdp_pop'); ?></h4>
+            <h4><?php echo esc_html__('Option 2: Query Parameter', 'bdp-popup'); ?></h4>
             <div class="bdp-code-block">
                 <code>curl -X GET "<?php echo esc_html($api_base_url); ?>/settings?api_key=<?php echo esc_html($api_key ? $api_key : 'YOUR_API_KEY_HERE'); ?>"</code>
             </div>
@@ -37,17 +37,17 @@ $api_base_url = rest_url('bdp-popup/v1');
     <!-- API Examples -->
     <div class="postbox">
         <div class="postbox-header">
-            <h2><?php echo esc_html__('API Request Examples', 'bdp_pop'); ?></h2>
+            <h2><?php echo esc_html__('API Request Examples', 'bdp-popup'); ?></h2>
         </div>
         <div class="inside">
-            <h3><?php echo esc_html__('1. Get All Settings', 'bdp_pop'); ?></h3>
-            <p><strong><?php echo esc_html__('Endpoint:', 'bdp_pop'); ?></strong> <span class="bdp-method-badge get">GET</span> <code>/settings</code></p>
+            <h3><?php echo esc_html__('1. Get All Settings', 'bdp-popup'); ?></h3>
+            <p><strong><?php echo esc_html__('Endpoint:', 'bdp-popup'); ?></strong> <span class="bdp-method-badge get">GET</span> <code>/settings</code></p>
             <div class="bdp-code-block">
                 <code>curl -X GET "<?php echo esc_html($api_base_url); ?>/settings" \
   -H "X-API-Key: <?php echo esc_html($api_key ? $api_key : 'YOUR_API_KEY_HERE'); ?>"</code>
             </div>
             
-            <h4><?php echo esc_html__('Response:', 'bdp_pop'); ?></h4>
+            <h4><?php echo esc_html__('Response:', 'bdp-popup'); ?></h4>
             <div class="bdp-code-block">
                 <code>{
   "success": true,
@@ -63,8 +63,8 @@ $api_base_url = rest_url('bdp-popup/v1');
 
             <hr style="margin: 30px 0; border: 0; border-top: 1px solid #dcdcde;">
 
-            <h3><?php echo esc_html__('2. Update Content Settings', 'bdp_pop'); ?></h3>
-            <p><strong><?php echo esc_html__('Endpoint:', 'bdp_pop'); ?></strong> <span class="bdp-method-badge post">POST</span> <code>/content</code></p>
+            <h3><?php echo esc_html__('2. Update Content Settings', 'bdp-popup'); ?></h3>
+            <p><strong><?php echo esc_html__('Endpoint:', 'bdp-popup'); ?></strong> <span class="bdp-method-badge post">POST</span> <code>/content</code></p>
             <div class="bdp-code-block">
                 <code>curl -X POST "<?php echo esc_html($api_base_url); ?>/content" \
   -H "X-API-Key: <?php echo esc_html($api_key ? $api_key : 'YOUR_API_KEY_HERE'); ?>" \
@@ -76,7 +76,7 @@ $api_base_url = rest_url('bdp-popup/v1');
   }'</code>
             </div>
 
-            <h4><?php echo esc_html__('Response:', 'bdp_pop'); ?></h4>
+            <h4><?php echo esc_html__('Response:', 'bdp-popup'); ?></h4>
             <div class="bdp-code-block">
                 <code>{
   "success": true,
@@ -86,8 +86,8 @@ $api_base_url = rest_url('bdp-popup/v1');
 
             <hr style="margin: 30px 0; border: 0; border-top: 1px solid #dcdcde;">
 
-            <h3><?php echo esc_html__('3. Update Universal Settings', 'bdp_pop'); ?></h3>
-            <p><strong><?php echo esc_html__('Endpoint:', 'bdp_pop'); ?></strong> <span class="bdp-method-badge post">POST</span> <code>/universal</code></p>
+            <h3><?php echo esc_html__('3. Update Universal Settings', 'bdp-popup'); ?></h3>
+            <p><strong><?php echo esc_html__('Endpoint:', 'bdp-popup'); ?></strong> <span class="bdp-method-badge post">POST</span> <code>/universal</code></p>
             <div class="bdp-code-block">
                 <code>curl -X POST "<?php echo esc_html($api_base_url); ?>/universal" \
   -H "X-API-Key: <?php echo esc_html($api_key ? $api_key : 'YOUR_API_KEY_HERE'); ?>" \
@@ -101,8 +101,8 @@ $api_base_url = rest_url('bdp-popup/v1');
 
             <hr style="margin: 30px 0; border: 0; border-top: 1px solid #dcdcde;">
 
-            <h3><?php echo esc_html__('4. Update Coupon Settings', 'bdp_pop'); ?></h3>
-            <p><strong><?php echo esc_html__('Endpoint:', 'bdp_pop'); ?></strong> <span class="bdp-method-badge post">POST</span> <code>/coupon</code></p>
+            <h3><?php echo esc_html__('4. Update Coupon Settings', 'bdp-popup'); ?></h3>
+            <p><strong><?php echo esc_html__('Endpoint:', 'bdp-popup'); ?></strong> <span class="bdp-method-badge post">POST</span> <code>/coupon</code></p>
             <div class="bdp-code-block">
                 <code>curl -X POST "<?php echo esc_html($api_base_url); ?>/coupon" \
   -H "X-API-Key: <?php echo esc_html($api_key ? $api_key : 'YOUR_API_KEY_HERE'); ?>" \
@@ -118,58 +118,58 @@ $api_base_url = rest_url('bdp-popup/v1');
     <!-- Available Endpoints Table -->
     <div class="postbox">
         <div class="postbox-header">
-            <h2><?php echo esc_html__('Available Endpoints', 'bdp_pop'); ?></h2>
+            <h2><?php echo esc_html__('Available Endpoints', 'bdp-popup'); ?></h2>
         </div>
         <div class="inside">
             <div class="bdp-table-wrapper">
                 <table class="wp-list-table widefat fixed striped">
                     <thead>
                         <tr>
-                            <th style="width: 15%;"><?php echo esc_html__('Method', 'bdp_pop'); ?></th>
-                            <th style="width: 30%;"><?php echo esc_html__('Endpoint', 'bdp_pop'); ?></th>
-                            <th style="width: 55%;"><?php echo esc_html__('Description', 'bdp_pop'); ?></th>
+                            <th style="width: 15%;"><?php echo esc_html__('Method', 'bdp-popup'); ?></th>
+                            <th style="width: 30%;"><?php echo esc_html__('Endpoint', 'bdp-popup'); ?></th>
+                            <th style="width: 55%;"><?php echo esc_html__('Description', 'bdp-popup'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><span class="bdp-method-badge get">GET</span></td>
                             <td><code>/settings</code></td>
-                            <td><?php echo esc_html__('Get all plugin settings', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Get all plugin settings', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge post">POST</span></td>
                             <td><code>/settings</code></td>
-                            <td><?php echo esc_html__('Update all plugin settings', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Update all plugin settings', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge get">GET</span></td>
                             <td><code>/content</code></td>
-                            <td><?php echo esc_html__('Get content settings (title, message, coupon, etc.)', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Get content settings (title, message, coupon, etc.)', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge post">POST</span></td>
                             <td><code>/content</code></td>
-                            <td><?php echo esc_html__('Update content settings', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Update content settings', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge get">GET</span></td>
                             <td><code>/universal</code></td>
-                            <td><?php echo esc_html__('Get universal settings (visibility, closed_date, etc.)', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Get universal settings (visibility, closed_date, etc.)', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge post">POST</span></td>
                             <td><code>/universal</code></td>
-                            <td><?php echo esc_html__('Update universal settings', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Update universal settings', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge get">GET</span></td>
                             <td><code>/coupon</code></td>
-                            <td><?php echo esc_html__('Get coupon button settings', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Get coupon button settings', 'bdp-popup'); ?></td>
                         </tr>
                         <tr>
                             <td><span class="bdp-method-badge post">POST</span></td>
                             <td><code>/coupon</code></td>
-                            <td><?php echo esc_html__('Update coupon button settings', 'bdp_pop'); ?></td>
+                            <td><?php echo esc_html__('Update coupon button settings', 'bdp-popup'); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -180,11 +180,11 @@ $api_base_url = rest_url('bdp-popup/v1');
     <!-- Error Responses -->
     <div class="postbox">
         <div class="postbox-header">
-            <h2><?php echo esc_html__('Error Responses', 'bdp_pop'); ?></h2>
+            <h2><?php echo esc_html__('Error Responses', 'bdp-popup'); ?></h2>
         </div>
         <div class="inside">
-            <h3><?php echo esc_html__('401 Unauthorized - No API Key Configured', 'bdp_pop'); ?></h3>
-            <p><?php echo esc_html__('This error occurs when the API key has not been generated yet.', 'bdp_pop'); ?></p>
+            <h3><?php echo esc_html__('401 Unauthorized - No API Key Configured', 'bdp-popup'); ?></h3>
+            <p><?php echo esc_html__('This error occurs when the API key has not been generated yet.', 'bdp-popup'); ?></p>
             <div class="bdp-code-block">
                 <code>{
   "code": "no_api_key",
@@ -195,8 +195,8 @@ $api_base_url = rest_url('bdp-popup/v1');
 }</code>
             </div>
 
-            <h3><?php echo esc_html__('403 Forbidden - Invalid API Key', 'bdp_pop'); ?></h3>
-            <p><?php echo esc_html__('This error occurs when the provided API key does not match the configured key.', 'bdp_pop'); ?></p>
+            <h3><?php echo esc_html__('403 Forbidden - Invalid API Key', 'bdp-popup'); ?></h3>
+            <p><?php echo esc_html__('This error occurs when the provided API key does not match the configured key.', 'bdp-popup'); ?></p>
             <div class="bdp-code-block">
                 <code>{
   "code": "invalid_api_key",
@@ -207,8 +207,8 @@ $api_base_url = rest_url('bdp-popup/v1');
 }</code>
             </div>
 
-            <h3><?php echo esc_html__('400 Bad Request - No Data Provided', 'bdp_pop'); ?></h3>
-            <p><?php echo esc_html__('This error occurs when making a POST request without providing data.', 'bdp_pop'); ?></p>
+            <h3><?php echo esc_html__('400 Bad Request - No Data Provided', 'bdp-popup'); ?></h3>
+            <p><?php echo esc_html__('This error occurs when making a POST request without providing data.', 'bdp-popup'); ?></p>
             <div class="bdp-code-block">
                 <code>{
   "code": "no_data",
@@ -219,8 +219,8 @@ $api_base_url = rest_url('bdp-popup/v1');
 }</code>
             </div>
 
-            <h3><?php echo esc_html__('200 Success', 'bdp_pop'); ?></h3>
-            <p><?php echo esc_html__('Successful requests return a 200 status code with the requested data or confirmation.', 'bdp_pop'); ?></p>
+            <h3><?php echo esc_html__('200 Success', 'bdp-popup'); ?></h3>
+            <p><?php echo esc_html__('Successful requests return a 200 status code with the requested data or confirmation.', 'bdp-popup'); ?></p>
             <div class="bdp-code-block">
                 <code>{
   "success": true,
@@ -234,7 +234,7 @@ $api_base_url = rest_url('bdp-popup/v1');
     <p>
         <a href="<?php echo esc_url(admin_url('admin.php?page=bdp_pop-api')); ?>" class="button button-primary">
             <span class="dashicons dashicons-admin-generic"></span>
-            <?php echo esc_html__('Back to API Settings', 'bdp_pop'); ?>
+            <?php echo esc_html__('Back to API Settings', 'bdp-popup'); ?>
         </a>
     </p>
 </div>
