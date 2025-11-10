@@ -134,9 +134,27 @@ class Page_Loader extends Base
         $position = 55.11;
         add_menu_page($page_title, $menu_title, $capability, $menu_slug, $callback, $icon_url, $position);
 
+        add_submenu_page( $this->main_slug, esc_html__( 'API', 'bdp_pop' ),  __( 'API', 'bdp_pop' ), $capability, 'bdp_pop-api', [$this, 'api_settings_html'] );
+
+        add_submenu_page( $this->main_slug, esc_html__( 'API Documentation', 'bdp_pop' ),  __( 'API Docs', 'bdp_pop' ), $capability, 'bdp_pop-api-docs', [$this, 'api_docs_html'] );
+
         add_submenu_page( $this->main_slug, esc_html__( 'Browse Plugins', 'bdp_pop' ),  __( 'Browse Plugins', 'bdp_pop' ), $capability, 'bdp_pop-browse-plugins', [$this, 'browse_plugins_html'] );
 
         add_submenu_page($this->main_slug, esc_html__('Documentation', 'bdp_pop'), esc_html__('Documentation', 'bdp_pop'), 'read', 'bdp_pop-documentation', [$this, 'documentation_html']);
+    }
+
+    public function api_settings_html()
+    {
+        $this->topbar_sub_title = __( 'API Settings & Management','bdp_pop' );
+        include $this->topbar_file;
+        include $this->page_folder_dir . 'api-settings.php';
+    }
+
+    public function api_docs_html()
+    {
+        $this->topbar_sub_title = __( 'API Documentation','bdp_pop' );
+        include $this->topbar_file;
+        include $this->page_folder_dir . 'api-docs.php';
     }
 
     public function documentation_html()

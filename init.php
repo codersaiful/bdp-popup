@@ -38,11 +38,14 @@ if( ! defined( 'BDP_POP_BASE_DIR' ) ){
 add_action( 'plugins_loaded',function(){
     include_once BDP_POP_BASE_DIR . 'autoloader.php';
     include_once BDP_POP_BASE_DIR . 'core/functions.php';
+    
+    // Initialize API Handler for REST API
+    BDP_Popup\Api\Api_Handler::init();
+    
     if(is_admin()){
         BDP_Popup\Admin\Admin_Loader::init();
     }
     if( ! is_admin() ){
-        BDP_Popup\Frontend\API::init();
         BDP_Popup\Frontend\Frontend_Loader::init();
     }
 } );
