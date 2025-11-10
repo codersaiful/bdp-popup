@@ -215,6 +215,11 @@ class Page_Loader extends Base
             wp_enqueue_style($this->plugin_prefix . 'popup-styles', $this->base_url . 'assets/css/popup-styles.css', array(), $this->dev_version);
             wp_enqueue_style($this->plugin_prefix . 'header-styles', $this->base_url . 'assets/css/header-styles.css', array(), $this->dev_version);
 
+            // Enqueue admin UI CSS for API pages
+            $admin_ui_css = $this->plugin_prefix . '-admin-ui';
+            wp_register_style( $admin_ui_css, $this->base_url . 'admin/assets/admin-ui.css', false, $this->dev_version );
+            wp_enqueue_style( $admin_ui_css );
+
             
 
         }
