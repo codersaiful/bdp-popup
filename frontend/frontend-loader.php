@@ -1,7 +1,6 @@
 <?php
 namespace BDP_Popup\Frontend;
 
-use BDP_Popup\Frontend\API;
 use BDP_Popup\Core\Base;
 
 class Frontend_Loader extends Base
@@ -24,11 +23,8 @@ class Frontend_Loader extends Base
     public $is_already_cookie;
     public $is_popup;
     public $options = [];
-    public $backup_options = [];
 
     public $current_page_id;
-
-    public $api_site_url;
 
 
     public static $inistance;
@@ -53,19 +49,6 @@ class Frontend_Loader extends Base
          */
         // $this->set_options();
         $this->options = get_option( $this->option_key, [] );
-
-        /**
-         * To set options based on api
-         * We need following function
-         * 
-         * @since 1.0.0.11
-         */
-        $this->api_site_url = $this->options['api_site_url'] ?? null;
-        $this->api_access_token = $this->options['api_access_token'] ?? null;
-            
-        if( ! empty( $this->api_site_url ) && filter_var($this->api_site_url, FILTER_VALIDATE_URL) && ! empty( $this->api_access_token ) ) {
-            $this->modify_options_based_on_api();
-        }
 
         //Popup and Header will close to the specific date
         $this->closed_date = ! empty( $this->options['closed_date'] ) ? $this->options['closed_date'] : time() + 100;
@@ -120,30 +103,6 @@ class Frontend_Loader extends Base
             $classes[] = 'bdp-popup-top';
         }
         return $classes;
-    }
-    protected function modify_options_based_on_api(){
-        $remote_data_transient = get_transient( $this->token_key );
-
-        if( ! empty( $remote_data_transient ) && $remote_data_transient['status'] === true ){
-            $this->options = array_merge( $remote_data_transient, array_filter( $this->options ) );
-            return;
-        }
-
-        $api = API::init();
-        $this->token_key = $api->token_key;
-        $remote_options = $api->get_remote();
-        if( ! empty( $remote_options ) && $remote_options['status'] === true ){
-            set_transient( $this->token_key, $remote_options, 8000);
-            $this->options = array_merge( $this->options, $remote_options );
-            return;
-        }
-
-        $this->backup_options = get_option( $this->backup_option_key, [] );
-        if( ! empty( $this->backup_options ) && $this->backup_options['status'] === true ){
-            $this->options = array_merge( $this->options, $this->backup_options );
-            return;
-        }
-        
     }
 
     public function wp_enqueue(){

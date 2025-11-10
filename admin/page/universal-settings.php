@@ -32,9 +32,6 @@
                         <select name="data[visibility_all]" id="data[visibility_all]" class="ua_input_select">
                             <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('ON', 'wcmmq'); ?></option>
                             <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('OFF', 'wcmmq'); ?></option>
-                            <?php if( $api_site_bool ): ?>
-                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
-                            <?php endif; ?>
                         </select>
                     </div>
                 </div>
@@ -114,9 +111,6 @@
                         <select name="data[popup_as_header]" id="data[popup_as_header]" class="ua_input_select">
                             <option value="on" <?php selected($selected_value, 'on'); ?>><?php echo esc_html__('ON', 'wcmmq'); ?></option>
                             <option value="off" <?php selected($selected_value, 'off'); ?>><?php echo esc_html__('OFF', 'wcmmq'); ?></option>
-                            <?php if( $api_site_bool ): ?>
-                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
-                            <?php endif; ?>
                         </select>
 
                     </div>
@@ -166,9 +160,6 @@
                         <select name="data[topbar_position]" id="data[topbar_position]" class="ua_input_select">
                             <option value="top" <?php selected($selected_value, 'top'); ?>><?php echo esc_html__('Top', 'wcmmq'); ?></option>
                             <option value="bottom" <?php selected($selected_value, 'bottom'); ?>><?php echo esc_html__('Bottom', 'wcmmq'); ?></option>
-                            <?php if( $api_site_bool ): ?>
-                                <option value="" <?php selected($selected_value, ''); ?>><?php echo esc_html__('Default', 'wcmmq'); ?></option>
-                            <?php endif; ?>
                         </select>                        
                         
                     </div>
